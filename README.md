@@ -16,3 +16,7 @@ Surprisingly, I found that, after reading hundreds of data science questions fro
 - Other Github repos
 
 A conclusion is that there are not as many different interview questions as I expected. After a careful data selection & categorization, I completed a NLP project on the dataset. Hopefully, you will enjoy reading it!
+
+## Exploration Results
+
+![alt text](https://github.com/Kizuna-Cheng/Data_Science_Interviews_NLP/blob/main/images/EDA_1.png)
