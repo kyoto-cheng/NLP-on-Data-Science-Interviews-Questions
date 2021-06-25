@@ -45,4 +45,13 @@ MultinomialNB              |             Random Forest |             Decision Tr
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Alt text](images/C_1.png?raw=true)  |  ![Alt text](images/C_2.png?raw=true) | ![Alt text](images/C_3.png?raw=true)
 
+## Data Science Interview Questions Resource: 
 
+- https://www.simplilearn.com/tutorials/data-science-tutorial/data-science-interview-questions
+- https://www.edureka.co/blog/interview-questions/data-science-interview-questions/
+- https://www.springboard.com/blog/data-science/data-science-interview-questions/
+- https://towardsdatascience.com/over-100-data-scientist-interview-questions-and-answers-c5a66186769a
+- https://towardsdatascience.com/120-data-scientist-interview-questions-and-answers-you-should-know-in-2021-b2faf7de8f3e
+- https://github.com/alexeygrigorev/data-science-interviews
+- https://github.com/kojino/120-Data-Science-Interview-Questions
+- https://github.com/khanhnamle1994/cracking-the-data-science-interview
