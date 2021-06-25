@@ -1,0 +1,1080 @@
+﻿Category,Questions,Answers
+Linear Regression,What are the assumptions required for linear regression? What if some of these assumptions are violated?,"There are four assumptions associated with a linear regression model:
+Linearity: The relationship between X and the mean of Y is linear.
+Homoscedasticity: The variance of the residual is the same for any value of X.
+Independence: Observations are independent of each other.
+Normality: For any fixed value of X, Y is normally distributed.
+Extreme violations of these assumptions will make the results redundant. Small violations of these assumptions will result in a greater bias or variance of the estimate."
+Statistics ,"What is collinearity? What is multicollinearity? How do you deal with it?
+","Collinearity is a linear association between two predictors. Multicollinearity is a situation where two or more predictors are highly linearly related.
+This can be problematic because it undermines the statistical significance of an independent variable. While it may not necessarily have a large impact on the model’s accuracy, it affects the variance of the prediction and reduces the quality of the interpretation of the independent variables.
+You could use the Variance Inflation Factors (VIF) to determine if there is any multicollinearity between independent variables — a standard benchmark is that if the VIF is greater than 5 then multicollinearity exists."
+Linear Regression,"What are the drawbacks of a linear model?
+","There are a couple of drawbacks of a linear model:
+A linear model holds some strong assumptions that may not be true in application. It assumes a linear relationship, multivariate normality, no or little multicollinearity, no auto-correlation, and homoscedasticity.
+A linear model can’t be used for discrete or binary outcomes.
+You can’t vary the model flexibility of a linear model."
+Linear Regression,What are ridge and lasso regression and what are the differences between them?,"Both L1 and L2 regularization are methods used to reduce the overfitting of training data. Least Squares minimizes the sum of the squared residuals, which can result in low bias but high variance. L2 Regularization, also called ridge regression, minimizes the sum of the squared residuals plus lambda times the slope squared. This additional term is called the Ridge Regression Penalty. This increases the bias of the model, making the fit worse on the training data, but also decreases the variance. If you take the ridge regression penalty and replace it with the absolute value of the slope, then you get Lasso regression or L1 regularization. L2 is less robust but has a stable solution and always one solution. L1 is more robust but has an unstable solution and can possibly have multiple solutions."
+KNN,How does K-Nearest Neighbor work?,"K-Nearest Neighbors is a classification technique where a new sample is classified by looking at the nearest classified points, hence ‘K-nearest’. In the example above, if k=1 then the unclassified point would be classified as a blue point.
+If the value of k is too low, it can be subject to outliers. However, if it’s too high, it may overlook classes with only a few samples."
+KMeans,How can you select k for k means?,"You can use the elbow method, which is a popular method used to determine the optimal value of k. Essentially, what you do is plot the squared error for each value of k on a graph (value of k on the x-axis and squared error on the y-axis). Once the graph is made, the point where the distortion declines the most is the elbow point."
+Naive Bayes,Why is Naive Bayes “naive”?,"Naive Bayes is naive because it holds a strong assumption in that the features are assumed to be uncorrelated with one another, which typically is never the case."
+SVM,What are the support vectors in SVM?,The support vectors are the data points that touch the boundaries of the maximum margin.
+Decision Trees,What is pruning in decision trees?,Pruning is a technique in machine learning and search algorithms that reduces the size of decision trees by removing sections or branches of the tree that provide little to no power for classifying instances.
+"Random Forest, Naive Bayes",What are random forests? Why is Naive Bayes better?,"Random forests are an ensemble learning technique that builds off of decision trees. Random forests involve creating multiple decision trees using bootstrapped datasets of the original data and randomly selecting a subset of variables at each step of the decision tree. The model then selects the mode of all of the predictions of each decision tree. By relying on a “majority wins” model, it reduces the risk of error from an individual tree. Random forests offer several other benefits including strong performance, can model non-linear boundaries, no cross-validation needed, and gives feature importance.
+Naive Bayes is better in the sense that it is easy to train and understand the process and results. A random forest can seem like a black box. Therefore, a Naive Bayes algorithm may be better in terms of implementation and understanding. However, in terms of performance, a random forest is typically stronger because it is an ensemble technique."
+"Random Forest, SVM",When would you use random forests Vs SVM and why?,"There are a couple of reasons why a random forest is a better choice of an algorithm than a support vector machine:
+Random forests allow you to determine the feature importance. SVM’s can’t do this.
+Random forests are much quicker and simpler to build than an SVM.
+For multi-class classification problems, SVMs require a one-vs-rest method, which is less scalable and more memory intensive."
+Decision Trees,Do you think 50 small decision trees are better than a large one? Why?,"Another way of asking this question is “Is a random forest a better model than a decision tree?” And the answer is yes because a random forest is an ensemble method that takes many weak decision trees to make a strong learner. Random forests are more accurate, more robust, and less prone to overfitting."
+"AdaBoost, Gradient Boost",What’s the difference between an AdaBoosted tree and a Gradient Boosted tree?,"AdaBoost is a boosted algorithm that is similar to Random Forests but has a couple of significant differences:
+Rather than a forest of trees, AdaBoost typically makes a forest of stumps (a stump is a tree with only one node and two leaves).
+Each stump’s decision is not weighted equally in the final decision. Stumps with less total error (high accuracy) will have a higher say.
+The order in which the stumps are created is important, as each subsequent stump emphasizes the importance of the samples that were incorrectly classified in the previous stump.
+Gradient Boost is similar to AdaBoost in the sense that it builds multiple trees where each tree is built off of the previous tree. Unlike AdaBoost which builds stumps, Gradient Boost builds trees with usually 8 to 32 leaves.
+More importantly, Gradient differs from AdaBoost in the way that the decisions trees are built. Gradient boost starts with an initial prediction, usually the average. Then, a decision tree is built based on the residuals of the samples. A new prediction is made by taking the initial prediction + a learning rate times the outcome of the residual tree, and the process is repeated."
+Statistics ,What is the bias-variance tradeoff?,"The bias of an estimator is the difference between the expected value and true value. A model with a high bias tends to be oversimplified and results in underfitting. Variance represents the model’s sensitivity to the data and the noise. A model with high variance results in overfitting.
+Therefore, the bias-variance tradeoff is a property of machine learning models in which lower variance results in higher bias and vice versa. Generally, an optimal balance of the two can be found in which error is minimized."
+EDA,Explain what the bootstrap sampling method is and give an example of when it’s used.,"Technically speaking, the bootstrap sampling method is a resampling method that uses random sampling with replacement. It’s an essential part of the random forest algorithm, as well as other ensemble learning algorithms."
+Methodology,What is the difference between bagging and boosting?,"Bagging, also known as bootstrap aggregating, is the process in which multiple models of the same learning algorithm are trained with bootstrapped samples of the original dataset. Then, like the random forest example above, a vote is taken on all of the models’ outputs. Boosting is a variation of bagging where each individual model is built sequentially, iterating over the previous one. Specifically, any data points that are falsely classified by the previous model is emphasized in the following model. This is done to improve the overall accuracy of the model. Once the first model is built, the falsely classified/predicted points are taken in addition to the second bootstrapped sample to train the second model. Then, the ensemble model (models 1 and 2) are used against the test dataset and the process continues."
+XGBoost,How does XGBoost handle the bias-variance tradeoff?,"XGBoost is an ensemble Machine Learning algorithm that leverages the gradient boosting algorithm. In essence, XGBoost is like a bagging and boosting technique on steroids. Therefore, you can say that XGBoost handles bias and variance similar to that of any boosting technique. Boosting is an ensemble meta-algorithm that reduces both bias and variance by takes a weighted average of many weak models. By focusing on weak predictions and iterating through models, the error (thus the bias) is reduced. Similarly, because it takes a weighted average of many weak models, the final model has a lower variance than each of the weaker models themselves."
+Methodology,What is cross-validation?,"Cross-validation is essentially a technique used to assess how well a model performs on a new independent dataset.
+The simplest example of cross-validation is when you split your data into three groups: training data, validation data, and testing data, where you use the training data to build the model, the validation data to tune the hyperparameters, and the testing data to evaluate your final model."
+Methodology,What is the difference between online and batch learning?,"Batch learning, also known as offline learning, is when you learn over groups of patterns. This is the type of learning that most people are familiar with, where you source a dataset and build a model on the whole dataset at once.
+Online learning, on the other hand, is an approach that ingests data one observation at a time. Online learning is data-efficient because the data is no longer required once it is consumed, which technically means that you don’t have to store your data."
+EDA,Give several ways to deal with missing values,"There are a number of ways to handle null values including the following:
+You can omit rows with null values altogether
+You can replace null values with measures of central tendency (mean, median, mode) or replace it with a new category (eg. ‘None’)
+You can predict the null values based on other variables. For example, if a row has a null value for weight, but it has a value for height, you can replace the null value with the average weight for that given height.
+Lastly, you can leave the null values if you are using a machine learning model that automatically deals with null values."
+EDA,Is mean imputation of missing data acceptable practice? Why or why not?,"Mean imputation is the practice of replacing null values in a data set with the mean of the data.
+Mean imputation is generally bad practice because it doesn’t take into account feature correlation. For example, imagine we have a table showing age and fitness score and imagine that an eighty-year-old has a missing fitness score. If we took the average fitness score from an age range of 15 to 80, then the eighty-year-old will appear to have a much higher fitness score than he actually should.
+Second, mean imputation reduces the variance of the data and increases bias in our data. This leads to a less accurate model and a narrower confidence interval due to a smaller variance."
+Methodology,What is a confusion matrix?,"A confusion matrix, also known as an error matrix, is a summarized table used to assess the performance of a classification model. The number of correct and incorrect predictions are summarized with count values and broken down by each class."
+Methodology,What is Supervised vs Unsupervised learning?,"Supervised learning involves learning on a labeled dataset where the target variable is known.
+Unsupervised learning is used to draw inferences and find patterns from input data without references to labeled outcomes — there’s no target variable."
+Methodology,What is ensemble learning?,Ensemble learning is a method where multiple learning algorithms are used in conjunction. The purpose of doing so is that it allows you to achieve higher predictive performance than if you were to use an individual algorithm by itself. An example of this is random forests.
+EDA,How can you identify outliers?,"There are a couple of ways to identify outliers:
+Z-score/standard deviations: if we know that 99.7% of data in a data set lie within three standard deviations, then we can calculate the size of one standard deviation, multiply it by 3, and identify the data points that are outside of this range. Likewise, we can calculate the z-score of a given point, and if it’s equal to +/- 3, then it’s an outlier.
+Note: that there are a few contingencies that need to be considered when using this method; the data must be normally distributed, this is not applicable for small data sets, and the presence of too many outliers can throw off z-score.
+Interquartile Range (IQR): IQR, the concept used to build boxplots, can also be used to identify outliers. The IQR is equal to the difference between the 3rd quartile and the 1st quartile. You can then identify if a point is an outlier if it is less than Q1–1.5*IRQ or greater than Q3 + 1.5*IQR. This comes to approximately 2.698 standard deviations.
+Other methods include DBScan clustering, Isolation Forests, and Robust Random Cut Forests."
+EDA,What is an inlier?,"An inlier is a data observation that lies within the rest of the dataset and is unusual or an error. Since it lies in the dataset, it is typically harder to identify than an outlier and requires external data to identify them."
+EDA,How can outliers be treated?,"There are a couple of ways:
+Remove outliers if they’re a garbage value.
+You can try a different model. For example, a non-linear model might treat an outlier differently than a linear model.
+You can normalize the data to narrow the range.
+You can use algorithms that account for outliers, such as random forests."
+Methodology,How are collaborative filtering and content-based filtering similar? different?,"In content-based filtering, you use the properties of the objects to find similar products. For example, using content-based filtering, a movie recommender may recommend movies of the same genre or movies directed by the same director.
+In collaborative filtering, your behavior is compared to other users and users with similar behavior dictate what is recommended to you. To give a very simple example, if you bought a tv and another user bought a tv as well as a recliner, you would be recommended the recliner as well."
+Methodology,What is principal component analysis? Explain the sort of problems you would use PCA for.,"In its simplest sense, PCA involves project higher dimensional data (eg. 3 dimensions) to a smaller space (eg. 2 dimensions). This results in a lower dimension of data, (2 dimensions instead of 3 dimensions) while keeping all original variables in the model.
+PCA is commonly used for compression purposes, to reduce required memory and to speed up the algorithm, as well as for visualization purposes, making it easier to summarize data."
+EDA,What is the difference between a validation set and a test set?,"Generally, the validation set is used to tune the hyperparameters of your model, while the testing set is used to evaluate your final model."
+Methodology,How can you avoid overfitting your model?,"For those who don’t know, overfitting is a modeling error when a function fits the data too closely, resulting in high levels of error when new data is introduced to the model.
+There are a number of ways that you can prevent overfitting of a model:
+Cross-validation: Cross-validation is a technique used to assess how well a model performs on a new independent dataset. The simplest example of cross-validation is when you split your data into two groups: training data and testing data, where you use the training data to build the model and the testing data to test the model.
+Regularization: Overfitting occurs when models have higher degree polynomials. Thus, regularization reduces overfitting by penalizing higher degree polynomials.
+Reduce the number of features: You can also reduce overfitting by simply reducing the number of input features. You can do this by manually removing features, or you can use a technique, called Principal Component Analysis, which projects higher dimensional data (eg. 3 dimensions) to a smaller space (eg. 2 dimensions).
+Ensemble Learning Techniques: Ensemble techniques take many weak learners and converts them into a strong learner through bagging and boosting. Through bagging and boosting, these techniques tend to overfit less than their alternative counterparts."
+EDA,What are some of the steps for data wrangling and data cleaning before applying machine learning algorithms?,"There are many steps that can be taken when data wrangling and data cleaning. Some of the most common steps are listed below:
+Data profiling: Almost everyone starts off by getting an understanding of their dataset. More specifically, you can look at the shape of the dataset with .shape and a description of your numerical variables with .describe().
+Data visualizations: Sometimes, it’s useful to visualize your data with histograms, boxplots, and scatterplots to better understand the relationships between variables and also to identify potential outliers.
+Syntax error: This includes making sure there’s no white space, making sure letter casing is consistent, and checking for typos. You can check for typos by using .unique() or by using bar graphs.
+Standardization or normalization: Depending on the dataset your working with and the machine learning method you decide to use, it may be useful to standardize or normalize your data so that different scales of different variables don’t negatively impact the performance of your model.
+Handling null values: There are a number of ways to handle null values including deleting rows with null values altogether, replacing null values with the mean/median/mode, replacing null values with a new category (eg. unknown), predicting the values, or using machine learning models that can deal with null values. Read more here.
+Other things include: removing irrelevant data, removing duplicates, and type conversion."
+Methodology,How should you deal with unbalanced binary classification?,"There are a number of ways to handle unbalanced binary classification (assuming that you want to identify the minority class):
+First, you want to reconsider the metrics that you’d use to evaluate your model. The accuracy of your model might not be the best metric to look at because and I’ll use an example to explain why. Let’s say 99 bank withdrawals were not fraudulent and 1 withdrawal was. If your model simply classified every instance as “not fraudulent”, it would have an accuracy of 99%! Therefore, you may want to consider using metrics like precision and recall.
+Another method to improve unbalanced binary classification is by increasing the cost of misclassifying the minority class. By increasing the penalty of such, the model should classify the minority class more accurately.
+Lastly, you can improve the balance of classes by oversampling the minority class or by undersampling the majority class."
+Statistics ,What is the difference between precision and recall?,Recall attempts to answer “What proportion of actual positives was identified correctly?” Precision attempts to answer “What proportion of positive identifications was actually correct?”
+Methodology,Why is mean square error a bad measure of model performance? What would you suggest instead?,"Mean Squared Error (MSE) gives a relatively high weight to large errors — therefore, MSE tends to put too much emphasis on large deviations. A more robust alternative is MAE (mean absolute deviation)."
+Statistics ,Explain what a false positive and a false negative are. Why is it important these from each other? Provide examples when false positives are more important than false negatives and when false negatives are more important than false positives.,"A false positive is an incorrect identification of the presence of a condition when it’s absent.
+A false negative is an incorrect identification of the absence of a condition when it’s actually present.
+An example of when false negatives are more important than false positives is when screening for cancer. It’s much worse to say that someone doesn’t have cancer when they do, instead of saying that someone does and later realizing that they don’t.
+This is a subjective argument, but false positives can be worse than false negatives from a psychological point of view. For example, a false positive for winning the lottery could be a worse outcome than a false negative because people normally don’t expect to win the lottery anyway."
+EDA,What are the feature selection methods used to select the right variables?,"There are two types of methods for feature selection: filter methods and wrapper methods.
+Filter methods include the following:
+Linear discrimination analysis
+ANOVA
+Chi-Square
+Wrapper methods include the following:
+Forward Selection: We test one feature at a time and keep adding them until we get a good fit
+Backward Selection: We test all the features and start removing them to see what works better"
+Neural Network,Briefly explain how a basic neural network works,"At its core, a Neural Network is essentially a network of mathematical equations. It takes one or more input variables, and by going through a network of equations, results in one or more output variables. In a neural network, there’s an input layer, one or more hidden layers, and an output layer. The input layer consists of one or more feature variables (or input variables or independent variables) denoted as x1, x2, …, xn. The hidden layer consists of one or more hidden nodes or hidden units. Similarly, the output variable consists of one or more output units. Like I said at the beginning, a neural network is nothing more than a network of equations. Each node in a neural network is composed of two functions, a linear function and an activation function. This is where things can get a little confusing, but for now, think of the linear function as some line of best fit. Also, think of the activation function like a light switch, which results in a number between 1 or 0."
+Neural Network,Why is Rectified Linear Unit a good activation function?,"The Rectified Linear Unit, also known as the ReLU function, is known to be a better activation function than the sigmoid function and the tanh function because it performs gradient descent faster."
+Neural Network,How are weights initialized in a Network?,"The weights of a neural network MUST be initialized randomly because this is an expectation of stochastic gradient descent.
+If you initialized all weights to the same value (i.e. zero or one), then each hidden unit will get exactly the same signal. For example, if all weights are initialized to 0, all hidden units will get zero signal."
+Neural Network,What happens if the learning rate is set too high or too low?,"If the learning rate is too low, your model will train very slowly as minimal updates are made to the weights through each iteration. Thus, it would take many updates before reaching the minimum point.
+If the learning rate is set too high, this causes undesirable divergent behavior to the loss function due to drastic updates in weights, and it may fail to converge."
+Neural Network,What are recurrent neural networks?,"Recurrent neural networks, also known as RNNs, are a class of neural networks that allow previous outputs to be used as inputs while having hidden states.
+They are commonly used to recognize the pattern of sequences in data, including time-series data, stock market data, etc…"
+Neural Network,What is the role of the activation function?,The purpose of the activation function is to introduce non-linearity into the output of a neuron. The activation function decides whether a neuron should be activated or not by calculating weighted sum and further adding bias with it.
+Statistics ,What is the p-value defined as?,"The p-value is the probability of obtaining the observed results of a test, assuming that the null hypothesis is correct; a smaller p-value means that there is stronger evidence in favor of the alternative hypothesis."
+Statistics ,What are covariance and correlation? How are they related?,"Covariance is a quantitative measure of the extent to which the deviation of one variable from its mean matches the deviation of the other from its mean.
+Correlation is a measurement of the relationship between two variables. It is the covariance of the two variables, normalized by the variance of each variable."
+Statistics ,What is the law of large numbers?,"The Law of Large Numbers is a theory that states that as the number of trials increases, the average of the result will become closer to the expected value.
+Eg. flipping heads from fair coin 100,000 times should be closer to 0.5 than 100 times."
+Statistics ,What is the Central Limit Theorem? Explain it. Why is it important?,"The central limit theorem states that the sampling distribution of the sample mean approaches a normal distribution as the sample size gets larger no matter what the shape of the population distribution.
+The central limit theorem is important because it is used in hypothesis testing and also to calculate confidence intervals."
+Statistics ,What is the Markov Property?,"When modeling a stochastic process, one in which an agent makes random decisions over time, such an assumption is referred to as the Markov property."
+Statistics ,What is statistical power?,"‘Statistical power’ refers to the power of a binary hypothesis, which is the probability that the test rejects the null hypothesis given that the alternative hypothesis is true."
+Statistics ,What are confounding variables?,"A confounding variable, or a confounder, is a variable that influences both the dependent variable and the independent variable, causing a spurious association, a mathematical relationship in which two or more variables are associated but not causally related."
+Statistics ,How does experimental data contrast with observational data?,"Observational data comes from observational studies which are when you observe certain variables without intervening and try to determine if there is any correlation.
+Experimental data comes from experimental studies (with intervention) which are when you control certain variables and hold them constant to determine if there is any causality."
+Statistics ,"Explain selection bias (with regard to a dataset, not variable selection). Why is it important? How can data management procedures such as missing data handling make it worse?","Selection bias is the phenomenon of selecting individuals, groups, or data for analysis in such a way that proper randomization is not achieved, ultimately resulting in a sample that is not representative of the population.
+Understanding and identifying selection bias is important because it can significantly skew results and provide false insights about a particular population group.
+Types of selection bias include:
+Sampling bias: a biased sample caused by non-random sampling
+Time interval: selecting a specific time frame that supports the desired conclusion. e.g. conducting a sales analysis near Christmas.
+Exposure: includes clinical susceptibility bias, protopathic bias, indication bias. 
+Data: includes cherry-picking, suppressing evidence, and the fallacy of incomplete evidence.
+Attrition: attrition bias is similar to survivorship bias, where only those that ‘survived’ a long process are included in an analysis, or failure bias, where those that ‘failed’ are only included
+Observer selection: related to the Anthropic principle, which is a philosophical consideration that any data we collect about the universe is filtered by the fact that, in order for it to be observable, it must be compatible with the conscious and sapient life that observes it.
+Handling missing data can make selection bias worse because different methods impact the data in different ways. For example, if you replace null values with the mean of the data, you adding bias in the sense that you’re assuming that the data is not as spread out as it might actually be."
+Statistics ,What is the difference between interpolation and extrapolation and why does it matter?,"Interpolation is when a prediction is made using inputs that lie within the set of observed values.
+Extrapolation is when a prediction is made using an input that’s outside of the set of observed values.
+It’s important to know the distinction because interpolations are generally more accurate than extrapolations."
+Statistics ,Give an example where the median is a better measure than the mean,When there are a number of outliers that positively or negatively skew the data.
+Statistics ,What is survivorship bias?,"The phenomenon where only those that ‘survived’ a long process are included or excluded in an analysis, thus creating a biased sample.
+A great example provided by Sreenivasan Chandrasekar is the following:
+“We enroll for gym membership and attend for a few days. We see the same faces of many people who are fit, motivated and exercising everyday whenever we go to gym. After a few days we become depressed why we aren’t able to stick to our schedule and motivation more than a week when most of the people who we saw at gym could. What we didn’t see was that many of the people who had enrolled for gym membership had also stopped turning up for gym just after a week and we didn’t see them.”"
+Statistics ,What is root cause analysis? How can you identify a cause vs. a correlation? Give examples.,"Root cause analysis is a method of problem-solving used for identifying the root cause(s) of a problem
+You can identify a correlation using simple data analyses. You can then identify causation by conducting an experiment so that all other variables are isolated (ideally)."
+Statistics ,Give me 3 types of statistical biases and explain each of them with an example.,"Sampling bias refers to a biased sample caused by non-random sampling.
+To give an example, imagine that there are 10 people in a room and you ask if they prefer grapes or bananas. If you only surveyed the three females and concluded that the majority of people like grapes, you’d have demonstrated sampling bias. Confirmation bias: the tendency to favour information that confirms one’s beliefs.
+Survivorship bias: the phenomenon where only those that ‘survived’ a long process are included or excluded in an analysis, thus creating a biased sample."
+Statistics ,Explain what a long-tailed distribution is and provide three examples of relevant phenomena that have long tails. Why are they important in classification and regression problems?,"A long-tailed distribution is a type of heavy-tailed distribution that has a tail (or tails) that drop off gradually and asymptotically.
+3 practical examples include the power law, the Pareto principle (more commonly known as the 80–20 rule), and product sales (i.e. best selling products vs others).
+It’s important to be mindful of long-tailed distributions in classification and regression problems because the least frequently occurring values make up the majority of the population. This can ultimately change the way that you deal with outliers, and it also conflicts with some machine learning techniques with the assumption that the data is normally distributed."
+Statistics ,What is A/B testing? When is it used in practice?,"A/B Testing is a statistical hypothesis testing meant for a randomized experiment with two variables, A and B. It is commonly used in product development and marketing."
+Statistics ,How do you control for biases?,"There are many things that you can do to control and minimize bias. Two common things include randomization, where participants are assigned by chance, and random sampling, sampling in which each member has an equal probability of being chosen."
+Statistics ,"Give examples of data that does not have a Gaussian distribution, nor log-normal.","Any type of categorical data won’t have a gaussian distribution or lognormal distribution.
+Exponential distributions — eg. the amount of time that a car battery lasts or the amount of time until an earthquake occurs."
+Statistics ,How do you assess the statistical significance of an insight?,"You would perform hypothesis testing to determine statistical significance. First, you would state the null hypothesis and alternative hypothesis. Second, you would calculate the p-value, the probability of obtaining the observed results of a test assuming that the null hypothesis is true. Last, you would set the level of the significance (alpha) and if the p-value is less than the alpha, you would reject the null — in other words, the result is statistically significant."
+Statistics ,The homicide rate in Scotland fell last year to 99 from 115 the year before. Is this reported change really noteworthy?,"Since this is a Poisson distribution question, mean = lambda = variance, which also means that standard deviation = square root of the mean.
+a 95% confidence interval implies a z score of 1.96
+one standard deviation = sqrt(115) = 10.724
+Therefore the confidence interval = 115+/- 21.45 = [93.55, 136.45]. Since 99 is within this confidence interval, we can assume that this change is not very noteworthy."
+Statistics ,What is the difference between a boxplot and a histogram?,"While boxplots and histograms are visualizations used to show the distribution of the data, they communicate information differently.
+Histograms are bar charts that show the frequency of a numerical variable’s values and are used to approximate the probability distribution of the given variable. It allows you to quickly understand the shape of the distribution, the variation, and potential outliers.
+Boxplots communicate different aspects of the distribution of data. While you can’t see the shape of the distribution through a box plot, you can gather other information like the quartiles, the range, and outliers. Boxplots are especially useful when you want to compare multiple charts at the same time because they take up less space than histograms."
+Statistics ,What is the meaning of ACF and PACF?,"To understand ACF and PACF, you first need to know what autocorrelation or serial correlation is. Autocorrelation looks at the degree of similarity between a given time series and a lagged version of itself.
+Therefore, the autocorrelation function (ACF) is a tool that is used to find patterns in the data, specifically in terms of correlations between points separated by various time lags. For example, ACF(0)=1 means that all data points are perfectly correlated with themselves and ACF(1)=0.9 means that the correlation between one point and the next one is 0.9.
+The PACF is short for partial autocorrelation function. Quoting a text from StackExchange, “It can be thought as the correlation between two points that are separated by some number of periods n, but with the effect of the intervening correlations removed.” For example. If T1 is directly correlated with T2 and T2 is directly correlated with T3, it would appear that T1 is correlated with T3. PACF will remove the intervening correlation with T2."
+Methodology,How would you design an experiment for a new feature we’re thinking about. What metrics would matter?,"I would conduct an A/B test to determine if the introduction of a new feature results in a statistically significant improvement in a given metric that we care about. The metric(s) chosen depends on the goal of the feature. For example, a feature may be introduced to increase conversion rates, or web traffic, or retention rates.
+First I would formulate my null hypothesis (feature X will not improve metric A) and my alternative hypothesis (feature X will improve metric A).
+Next, I would create my control and test group through random sampling. Because the t-test inherently considers the sample size, I’m not going to specify a necessary sample size, although the larger the better.
+Once I collect my data, depending on the characteristics of my data, I’d then conduct a t-test, Welch’s t-test, chi-squared test, or a Bayesian A/B test to determine whether the differences between my control and test group are statistically significant."
+Methodology,How do you prove that males are on average taller than females by knowing just gender height?,"You can use hypothesis testing to prove that males are taller on average than females.
+The null hypothesis would state that males and females are the same height on average, while the alternative hypothesis would state that the average height of males is greater than the average height of females.
+Then you would collect a random sample of heights of males and females and use a t-test to determine if you reject the null or not."
+Methodology,"If a PM says that they want to double the number of ads in Newsfeed, how would you figure out if this is a good idea or not?","You can perform an A/B test by splitting the users into two groups: a control group with the normal number of ads and a test group with double the number of ads. Then you would choose the metric to define what a “good idea” is. For example, we can say that the null hypothesis is that doubling the number of ads will reduce the time spent on Facebook and the alternative hypothesis is that doubling the number of ads won’t have any impact on the time spent on Facebook. However, you can choose a different metric like the number of active users or the churn rate. Then you would conduct the test and determine the statistical significance of the test to reject or not reject the null."
+Methodology,How can you tell if a given coin is biased?,"This isn’t a trick question. The answer is simply to perform a hypothesis test:
+The null hypothesis is that the coin is not biased and the probability of flipping heads should equal 50% (p=0.5). The alternative hypothesis is that the coin is biased and p != 0.5.
+Flip the coin 500 times.
+Calculate Z-score (if the sample is less than 30, you would calculate the t-statistics).
+Compare against alpha (two-tailed test so 0.05/2 = 0.025).
+If p-value > alpha, the null is not rejected and the coin is not biased.
+If p-value < alpha, the null is rejected and the coin is biased."
+Methodology,How to define/select metrics?,"There isn’t a one-size-fits-all metric. The metric(s) chosen to evaluate a machine learning model depends on various factors:
+Is it a regression or classification task?
+What is the business objective? Eg. precision vs recall
+What is the distribution of the target variable?
+There are a number of metrics that can be used, including adjusted r-squared, MAE, MSE, accuracy, recall, precision, f1 score, and the list goes on."
+Methodology,Why is dimension reduction important?,"Dimensionality reduction is the process of reducing the number of features in a dataset. This is important mainly in the case when you want to reduce variance in your model (overfitting).
+Wikipedia states four advantages of dimensionality reduction:
+It reduces the time and storage space required
+Removal of multi-collinearity improves the interpretation of the parameters of the machine learning model
+It becomes easier to visualize the data when reduced to very low dimensions such as 2D or 3D
+It avoids the curse of dimensionality"
+Naive Bayes,Why is Naive Bayes so bad? How would you improve a spam detection algorithm that uses naive Bayes?,"One major drawback of Naive Bayes is that it holds a strong assumption in that the features are assumed to be uncorrelated with one another, which typically is never the case.
+One way to improve such an algorithm that uses Naive Bayes is by decorrelating the features so that the assumption holds true."
+Linear Regression,How to check if the regression model fits the data well?,"There are a couple of metrics that you can use:
+R-squared/Adjusted R-squared: Relative measure of fit. This was explained in a previous answer
+F1 Score: Evaluates the null hypothesis that all regression coefficients are equal to zero vs the alternative hypothesis that at least one doesn’t equal zero
+RMSE: Absolute measure of fit."
+Decision Trees,What is a decision tree?,"Decision trees are a popular model, used in operations research, strategic planning, and machine learning. Each square above is called a node, and the more nodes you have, the more accurate your decision tree will be (generally). The last nodes of the decision tree, where a decision is made, are called the leaves of the tree. Decision trees are intuitive and easy to build but fall short when it comes to accuracy."
+SVM,What is a kernel? Explain the kernel trick,"A kernel is a way of computing the dot product of two vectors 𝐱x and 𝐲y in some (possibly very high dimensional) feature space, which is why kernel functions are sometimes called “generalized dot product”. The kernel trick is a method of using a linear classifier to solve a non-linear problem by transforming linearly inseparable data to linearly separable ones in a higher dimension."
+SVM,Is it beneficial to perform dimensionality reduction before fitting an SVM? Why or why not?,"When the number of features is greater than the number of observations, then performing dimensionality reduction will generally improve the SVM."
+Methodology,What is overfitting?,"Overfitting is an error where the model ‘fits’ the data too well, resulting in a model with high variance and low bias. As a consequence, an overfit model will inaccurately predict new data points even though it has a high accuracy on the training data."
+Methodology,What is boosting?,"Boosting is an ensemble method to improve a model by reducing its bias and variance, ultimately converting weak learners to strong learners. The general idea is to train a weak learner and sequentially iterate and improve the model by learning from the previous learner."
+Statistics,Difference between convex and non-convex cost function; what does it mean when a cost function is non-convex?,"A convex function is one where a line drawn between any two points on the graph lies on or above the graph. It has one minimum.
+A non-convex function is one where a line drawn between any two points on the graph may intersect other points on the graph. It characterized as “wavy”.
+When a cost function is non-convex, it means that there’s a likelihood that the function may find local minima instead of the global minimum, which is typically undesired in machine learning models from an optimization perspective."
+EDA,"What is an outlier? Explain how you might screen for outliers and what would you do if you found them in your dataset. Also, explain what an inlier is and how you might screen for them and what would you do if you found them in your dataset.","An outlier is a data point that differs significantly from other observations.
+Depending on the cause of the outlier, they can be bad from a machine learning perspective because they can worsen the accuracy of a model. If the outlier is caused by a measurement error, it’s important to remove them from the dataset. There are a couple of ways to identify outliers:
+Z-score/standard deviations: if we know that 99.7% of data in a data set lie within three standard deviations, then we can calculate the size of one standard deviation, multiply it by 3, and identify the data points that are outside of this range. Likewise, we can calculate the z-score of a given point, and if it’s equal to +/- 3, then it’s an outlier.
+Note: that there are a few contingencies that need to be considered when using this method; the data must be normally distributed, this is not applicable for small data sets, and the presence of too many outliers can throw off z-score. Interquartile Range (IQR): IQR, the concept used to build boxplots, can also be used to identify outliers. The IQR is equal to the difference between the 3rd quartile and the 1st quartile. You can then identify if a point is an outlier if it is less than Q1–1.5*IRQ or greater than Q3 + 1.5*IQR. This comes to approximately 2.698 standard deviations. Other methods include DBScan clustering, Isolation Forests, and Robust Random Cut Forests.
+An inlier is a data observation that lies within the rest of the dataset and is unusual or an error. Since it lies in the dataset, it is typically harder to identify than an outlier and requires external data to identify them. Should you identify any inliers, you can simply remove them from the dataset to address them."
+EDA,How do you handle missing data? What imputation techniques do you recommend?,"There are several ways to handle missing data:
+Delete rows with missing data
+Mean/Median/Mode imputation
+Assigning a unique value
+Predicting the missing values
+Using an algorithm which supports missing values, like random forests
+The best method is to delete rows with missing data as it ensures that no bias or variance is added or removed, and ultimately results in a robust and accurate model. However, this is only recommended if there’s a lot of data to start with and the percentage of missing values is low."
+Methodology,"You are compiling a report for user content uploaded every month and notice a spike in uploads in October. In particular, a spike in picture uploads. What might you think is the cause of this, and how would you test it?","There are a number of potential reasons for a spike in photo uploads:
+A new feature may have been implemented in October which involves uploading photos and gained a lot of traction by users. For example, a feature that gives the ability to create photo albums.
+Similarly, it’s possible that the process of uploading photos before was not intuitive and was improved in the month of October.
+There may have been a viral social media movement that involved uploading photos that lasted for all of October. Eg. Movember but something more scalable.
+It’s possible that the spike is due to people posting pictures of themselves in costumes for Halloween.
+The method of testing depends on the cause of the spike, but you would conduct hypothesis testing to determine if the inferred cause is the actual cause."
+Statistics,How do you calculate the needed sample size?,You can use the margin of error (ME) formula to determine the desired sample size.
+Methodology,You are running for office and your pollster polled hundred people. Sixty of them claimed they will vote for you. Can you relax?,"Assume that there’s only you and one other opponent.
+Also, assume that we want a 95% confidence interval. This gives us a z-score of 1.96. p-hat = 60/100 = 0.6
+z* = 1.96
+n = 100
+This gives us a confidence interval of [50.4,69.6]. Therefore, given a confidence interval of 95%, if you are okay with the worst scenario of tying then you can relax. Otherwise, you cannot relax until you got 61 out of 100 to claim yes."
+Methodology,You are given a train data set having 1000 columns and 1 million rows. The data set is based on a classification problem. Your manager has asked you to reduce the dimension of this data so that model computation time can be reduced. Your machine has memory constraints. What would you do? (You are free to make practical assumptions.),"Since we have lower RAM, we should close all other applications in our machine, including the web browser, so that most of the memory can be put to use.
+We can randomly sample the data set. This means, we can create a smaller data set, let’s say, having 1000 variables and 300000 rows and do the computations.
+To reduce dimensionality, we can separate the numerical and categorical variables and remove the correlated variables. For numerical variables, we’ll use correlation. For categorical variables, we’ll use chi-square test.
+Also, we can use PCA and pick the components which can explain the maximum variance in the data set.
+Using online learning algorithms like Vowpal Wabbit (available in Python) is a possible option.
+Building a linear model using Stochastic Gradient Descent is also helpful.
+We can also apply our business understanding to estimate which all predictors can impact the response variable. But, this is an intuitive approach, failing to identify useful predictors might result in significant loss of information."
+Methodology,"Is rotation necessary in PCA? If yes, Why? What will happen if you don’t rotate the components?","Yes, rotation (orthogonal) is necessary because it maximizes the difference between variance captured by the component. This makes the components easier to interpret. Not to forget, that’s the motive of doing PCA where, we aim to select fewer components (than features) which can explain the maximum variance in the data set. By doing rotation, the relative location of the components doesn’t change, it only changes the actual coordinates of the points.
+
+If we don’t rotate the components, the effect of PCA will diminish and we’ll have to select more number of components to explain variance in the data set."
+Statistics,You are given a data set. The data set has missing values which spread along 1 standard deviation from the median. What percentage of data would remain unaffected? Why?,"This question has enough hints for you to start thinking! Since, the data is spread across median, let’s assume it’s a normal distribution. We know, in a normal distribution, ~68% of the data lies in 1 standard deviation from mean (or mode, median), which leaves ~32% of the data unaffected. Therefore, ~32% of the data would remain unaffected by missing values."
+Statistics,You are given a data set on cancer detection. You’ve build a classification model and achieved an accuracy of 96%. Why shouldn’t you be happy with your model performance? What can you do about it?,"If you have worked on enough data sets, you should deduce that cancer detection results in imbalanced data. In an imbalanced data set, accuracy should not be used as a measure of performance because 96% (as given) might only be predicting majority class correctly, but our class of interest is minority class (4%) which is the people who actually got diagnosed with cancer. Hence, in order to evaluate model performance, we should use Sensitivity (True Positive Rate), Specificity (True Negative Rate), F measure to determine class wise performance of the classifier. If the minority class performance is found to to be poor, we can undertake the following steps:               We can use undersampling, oversampling or SMOTE to make the data balanced.
+We can alter the prediction threshold value by doing probability caliberation and finding a optimal threshold using AUC-ROC curve.
+We can assign weight to classes such that the minority classes gets larger weight.
+We can also use anomaly detection."
+Naive Bayes,Why is naive Bayes so ‘naive’ ?,"naive Bayes is so ‘naive’ because it assumes that all of the features in a data set are equally important and independent. As we know, these assumption are rarely true in real world scenario."
+Naive Bayes,"Explain prior probability, likelihood and marginal likelihood in context of Naive Bayes algorithm?","Prior probability is nothing but, the proportion of dependent (binary) variable in the data set. It is the closest guess you can make about a class, without any further information. For example: In a data set, the dependent variable is binary (1 and 0). The proportion of 1 (spam) is 70% and 0 (not spam) is 30%. Hence, we can estimate that there are 70% chances that any new email would be classified as spam.
+
+Likelihood is the probability of classifying a given observation as 1 in presence of some other variable. For example: The probability that the word ‘FREE’ is used in previous spam message is likelihood. Marginal likelihood is, the probability that the word ‘FREE’ is used in any message."
+"Time Series, Decision Trees","You are working on a time series data set. You manager has asked you to build a high accuracy model. You start with the decision tree algorithm, since you know it works fairly well on all kinds of data. Later, you tried a time series regression model and got higher accuracy than decision tree model. Can this happen? Why?","Time series data is known to posses linearity. On the other hand, a decision tree algorithm is known to work best to detect non – linear interactions. The reason why decision tree failed to provide robust predictions because it couldn’t map the linear relationship as good as a regression model did. Therefore, we learned that, a linear regression model can provide robust prediction given the data set satisfies its linearity assumptions."
+Methodology,"You are assigned a new project which involves helping a food delivery company save more money. The problem is, company’s delivery team aren’t able to deliver food on time. As a result, their customers get unhappy. And, to keep them happy, they end up delivering food for free. Which machine learning algorithm can save them?","You might have started hopping through the list of ML algorithms in your mind. But, wait! Such questions are asked to test your machine learning fundamentals.
+
+This is not a machine learning problem. This is a route optimization problem. A machine learning problem consist of three things:
+
+There exist a pattern.
+You cannot solve it mathematically (even by writing exponential equations).
+You have data on it.
+Always look for these three factors to decide if machine learning is a tool to solve a particular problem."
+Methodology,You came to know that your model is suffering from low bias and high variance. Which algorithm should you use to tackle it? Why?,"Low bias occurs when the model’s predicted values are near to actual values. In other words, the model becomes flexible enough to mimic the training data distribution. While it sounds like great achievement, but not to forget, a flexible model has no generalization capabilities. It means, when this model is tested on an unseen data, it gives disappointing results.
+
+In such situations, we can use bagging algorithm (like random forest) to tackle high variance problem. Bagging algorithms divides a data set into subsets made with repeated randomized sampling. Then, these samples are used to generate a set of models using a single learning algorithm. Later, the model predictions are combined using voting (classification) or averaging (regression).
+
+Also, to combat high variance, we can:
+
+Use regularization technique, where higher model coefficients get penalized, hence lowering model complexity.
+Use top n features from variable importance chart. May be, with all the variable in the data set, the algorithm is having difficulty in finding the meaningful signal."
+EDA,"You are given a data set. The data set contains many variables, some of which are highly correlated and you know about it. Your manager has asked you to run PCA. Would you remove correlated variables first? Why?","Chances are, you might be tempted to say No, but that would be incorrect. Discarding correlated variables have a substantial effect on PCA because, in presence of correlated variables, the variance explained by a particular component gets inflated.
+
+For example: You have 3 variables in a data set, of which 2 are correlated. If you run PCA on this data set, the first principal component would exhibit twice the variance than it would exhibit with uncorrelated variables. Also, adding correlated variables lets PCA put more importance on those variable, which is misleading."
+Methodology,"After spending several hours, you are now anxious to build a high accuracy model. As a result, you build 5 GBM models, thinking a boosting algorithm would do the magic. Unfortunately, neither of models could perform better than benchmark score. Finally, you decided to combine those models. Though, ensembled models are known to return high accuracy, but you are unfortunate. Where did you miss?","As we know, ensemble learners are based on the idea of combining weak learners to create strong learners. But, these learners provide superior result when the combined models are uncorrelated. Since, we have used 5 GBM models and got no accuracy improvement, suggests that the models are correlated. The problem with correlated models is, all the models provide same information.
+
+For example: If model 1 has classified User1122 as 1, there are high chances model 2 and model 3 would have done the same, even if its actual value is 0. Therefore, ensemble learners are built on the premise of combining weak uncorrelated models to obtain better predictions."
+"KNN, KMeans",How is kNN different from kmeans clustering?,"Don’t get mislead by ‘k’ in their names. You should know that the fundamental difference between both these algorithms is, kmeans is unsupervised in nature and kNN is supervised in nature. kmeans is a clustering algorithm. kNN is a classification (or regression) algorithm.
+
+kmeans algorithm partitions a data set into clusters such that a cluster formed is homogeneous and the points in each cluster are close to each other. The algorithm tries to maintain enough separability between these clusters. Due to unsupervised nature, the clusters have no labels.
+
+kNN algorithm tries to classify an unlabeled observation based on its k (can be any number ) surrounding neighbors. It is also known as lazy learner because it involves minimal training of model. Hence, it doesn’t use training data to make generalization on unseen data set."
+Statistics,How is True Positive Rate and Recall related? Write the equation.,"True Positive Rate = Recall. Yes, they are equal having the formula (TP/TP + FN)."
+Linear Regression,"You have built a multiple regression model. Your model R² isn’t as good as you wanted. For improvement, your remove the intercept term, your model R² becomes 0.8 from 0.3. Is it possible? How?","Yes, it is possible. We need to understand the significance of intercept term in a regression model. The intercept term shows model prediction without any independent variable i.e. mean prediction. The formula of R² = 1 – ∑(y – y´)²/∑(y – ymean)² where y´ is predicted value.
+
+When intercept term is present, R² value evaluates your model wrt. to the mean model. In absence of intercept term (ymean), the model can make no such evaluation, with large denominator, ∑(y - y´)²/∑(y)² equation’s value becomes smaller than actual, resulting in higher R²."
+Linear Regression,"After analyzing the model, your manager has informed that your regression model is suffering from multicollinearity. How would you check if he’s true? Without losing any information, can you still build a better model?","To check multicollinearity, we can create a correlation matrix to identify & remove variables having correlation above 75% (deciding a threshold is subjective). In addition, we can use calculate VIF (variance inflation factor) to check the presence of multicollinearity. VIF value = 10 implies serious multicollinearity. Also, we can use tolerance as an indicator of multicollinearity.
+
+But, removing correlated variables might lead to loss of information. In order to retain those variables, we can use penalized regression models like ridge or lasso regression. Also, we can add some random noise in correlated variable so that the variables become different from each other. But, adding noise might affect the prediction accuracy, hence this approach should be carefully used."
+Linear Regression,When is Ridge regression favorable over Lasso regression?,"Conceptually, we can say, lasso regression (L1) does both variable selection and parameter shrinkage, whereas Ridge regression only does parameter shrinkage and end up including all the coefficients in the model. In presence of correlated variables, ridge regression might be the preferred choice. Also, ridge regression works best in situations where the least square estimates have higher variance. Therefore, it depends on our model objective."
+Statistics,Rise in global average temperature led to decrease in number of pirates around the world. Does that mean that decrease in number of pirates caused the climate change?,"After reading this question, you should have understood that this is a classic case of “causation and correlation”. No, we can’t conclude that decrease in number of pirates caused the climate change because there might be other factors (lurking or confounding variables) influencing this phenomenon.
+
+Therefore, there might be a correlation between global average temperature and number of pirates, but based on this information we can’t say that pirated died because of rise in global average temperature.
+"
+EDA,"While working on a data set, how do you select important variables? Explain your methods.","Following are the methods of variable selection you can use:
+
+Remove the correlated variables prior to selecting important variables
+Use linear regression and select variables based on p values
+Use Forward Selection, Backward Selection, Stepwise Selection
+Use Random Forest, Xgboost and plot variable importance chart
+Use Lasso Regression
+Measure information gain for the available set of features and select top n features accordingly."
+Statistics ,What is the difference between covariance and correlation?,"Correlation is the standardized form of covariance.
+
+Covariances are difficult to compare. For example: if we calculate the covariances of salary ($) and age (years), we’ll get different covariances which can’t be compared because of having unequal scales. To combat such situation, we calculate correlation to get a value between -1 and 1, irrespective of their respective scale."
+Statistics ,"Is it possible capture the correlation between continuous and categorical variable? If yes, how?","Yes, we can use ANCOVA (analysis of covariance) technique to capture association between continuous and categorical variables."
+"Random Forest, Gradient Boosting","Both being tree based algorithm, how is random forest different from Gradient boosting algorithm (GBM)?","The fundamental difference is, random forest uses bagging technique to make predictions. GBM uses boosting techniques to make predictions.
+
+In bagging technique, a data set is divided into n samples using randomized sampling. Then, using a single learning algorithm a model is build on all samples. Later, the resultant predictions are combined using voting or averaging. Bagging is done in parallel. In boosting, after the first round of predictions, the algorithm weighs misclassified predictions higher, such that they can be corrected in the succeeding round. This sequential process of giving higher weights to misclassified predictions continue until a stopping criterion is reached.
+
+Random forest improves model accuracy by reducing variance (mainly). The trees grown are uncorrelated to maximize the decrease in variance. On the other hand, GBM improves accuracy my reducing both bias and variance in a model."
+Decision Trees,Running a binary classification tree algorithm is the easy part. Do you know how does a tree splitting takes place i.e. how does the tree decide which variable to split at the root node and succeeding nodes?,"A classification trees makes decision based on Gini Index and Node Entropy. In simple words, the tree algorithm find the best possible feature which can divide the data set into purest possible children nodes."
+Random Forest,"You’ve built a random forest model with 10000 trees. You got delighted after getting training error as 0.00. But, the validation error is 34.23. What is going on? Haven’t you trained your model perfectly?","The model has overfitted. Training error 0.00 means the classifier has mimiced the training data patterns to an extent, that they are not available in the unseen data. Hence, when this classifier was run on unseen sample, it couldn’t find those patterns and returned prediction with higher error. In random forest, it happens when we use larger number of trees than necessary. Hence, to avoid these situation, we should tune number of trees using cross validation.
+"
+Methodology,You’ve got a data set to work having p (no. of variable) > n (no. of observation). Why is OLS as bad option to work with? Which techniques would be best to use? Why?,"In such high dimensional data sets, we can’t use classical regression techniques, since their assumptions tend to fail. When p > n, we can no longer calculate a unique least square coefficient estimate, the variances become infinite, so OLS cannot be used at all.
+
+To combat this situation, we can use penalized regression methods like lasso, LARS, ridge which can shrink the coefficients to reduce variance. Precisely, ridge regression works best in situations where the least square estimates have higher variance.
+
+Among other methods include subset regression, forward stepwise regression."
+SVM,What is convex hull ? (Hint: Think SVM),"In case of linearly separable data, convex hull represents the outer boundaries of the two group of data points. Once convex hull is created, we get maximum margin hyperplane (MMH) as a perpendicular bisector between two convex hulls. MMH is the line which attempts to create greatest separation between two groups."
+EDA,"We know that one hot encoding increasing the dimensionality of a data set. But, label encoding doesn’t. How ?","Don’t get baffled at this question. It’s a simple question asking the difference between the two.
+
+Using one hot encoding, the dimensionality (a.k.a features) in a data set get increased because it creates a new variable for each level present in categorical variables. For example: let’s say we have a variable ‘color’. The variable has 3 levels namely Red, Blue and Green. One hot encoding ‘color’ variable will generate three new variables as Color.Red, Color.Blue and Color.Green containing 0 and 1 value.
+
+In label encoding, the levels of a categorical variables gets encoded as 0 and 1, so no new variable is created. Label encoding is majorly used for binary variables."
+Time Series,What cross validation technique would you use on time series data set? Is it k-fold or LOOCV?,"Neither.
+
+In time series problem, k fold can be troublesome because there might be some pattern in year 4 or 5 which is not in year 3. Resampling the data set will separate these trends, and we might end up validation on past years, which is incorrect. Instead, we can use forward chaining strategy with 5 fold as shown below:
+
+fold 1 : training [1], test [2]
+fold 2 : training [1 2], test [3]
+fold 3 : training [1 2 3], test [4]
+fold 4 : training [1 2 3 4], test [5]
+fold 5 : training [1 2 3 4 5], test [6]
+where 1,2,3,4,5,6 represents “year”.
+"
+EDA,"You are given a data set consisting of variables having more than 30% missing values? Let’s say, out of 50 variables, 8 variables have missing values higher than 30%. How will you deal with them?","We can deal with them in the following ways:
+
+Assign a unique category to missing values, who knows the missing values might decipher some trend
+We can remove them blatantly.
+Or, we can sensibly check their distribution with the target variable, and if found any pattern we’ll keep those missing values and assign them a new category while removing others."
+Methodology,"‘People who bought this, also bought…’ recommendations seen on amazon is a result of which algorithm?","The basic idea for this kind of recommendation engine comes from collaborative filtering.
+
+Collaborative Filtering algorithm considers “User Behavior” for recommending items. They exploit behavior of other users and items in terms of transaction history, ratings, selection and purchase information. Other users behaviour and preferences over the items are used to recommend items to the new users. In this case, features of the items are not known."
+Statistics ,What do you understand by Type I vs Type II error ?,"Type I error is committed when the null hypothesis is true and we reject it, also known as a ‘False Positive’. Type II error is committed when the null hypothesis is false and we accept it, also known as ‘False Negative’.
+
+In the context of confusion matrix, we can say Type I error occurs when we classify a value as positive (1) when it is actually negative (0). Type II error occurs when we classify a value as negative (0) when it is actually positive(1)."
+Methodology,"You are working on a classification problem. For validation purposes, you’ve randomly sampled the training data set into train and validation. You are confident that your model will work incredibly well on unseen data since your validation accuracy is high. However, you get shocked after getting poor test accuracy. What went wrong?","In case of classification problem, we should always use stratified sampling instead of random sampling. A random sampling doesn’t takes into consideration the proportion of target classes. On the contrary, stratified sampling helps to maintain the distribution of target variable in the resultant distributed samples also."
+Linear Regression,"You have been asked to evaluate a regression model based on R², adjusted R² and tolerance. What will be your criteria?","Tolerance (1 / VIF) is used as an indicator of multicollinearity. It is an indicator of percent of variance in a predictor which cannot be accounted by other predictors. Large values of tolerance is desirable.
+
+We will consider adjusted R² as opposed to R² to evaluate model fit because R² increases irrespective of improvement in prediction accuracy as we add more variables. But, adjusted R² would only increase if an additional variable improves the accuracy of model, otherwise stays same. It is difficult to commit a general threshold value for adjusted R² because it varies between data sets. For example: a gene mutation data set might result in lower adjusted R² and still provide fairly good predictions, as compared to a stock market data where lower adjusted R² implies that model is not good."
+"KMeans, KNN","In k-means or kNN, we use euclidean distance to calculate the distance between nearest neighbors. Why not manhattan distance ?","We don’t use manhattan distance because it calculates distance horizontally or vertically only. It has dimension restrictions. On the other hand, euclidean metric can be used in any space to calculate distance. Since, the data points can be present in any dimension, euclidean distance is a more viable option."
+Methodology,Explain machine learning to me like a 5 year old.,"It’s simple. It’s just like how babies learn to walk. Every time they fall down, they learn (unconsciously) & realize that their legs should be straight and not in a bend position. The next time they fall down, they feel pain. They cry. But, they learn ‘not to stand like that again’. In order to avoid that pain, they try harder. To succeed, they even seek support from the door or wall or anything near them, which helps them stand firm.
+
+This is how a machine works & develops intuition from its environment."
+"Linear Regression, Logistic Regression",I know that a linear regression model is generally evaluated using Adjusted R² or F value. How would you evaluate a logistic regression model?,"Since logistic regression is used to predict probabilities, we can use AUC-ROC curve along with confusion matrix to determine its performance.
+Also, the analogous metric of adjusted R² in logistic regression is AIC. AIC is the measure of fit which penalizes model for the number of model coefficients. Therefore, we always prefer model with minimum AIC value.
+Null Deviance indicates the response predicted by a model with nothing but an intercept. Lower the value, better the model. Residual deviance indicates the response predicted by a model on adding independent variables. Lower the value, better the model."
+Methodology,"Considering the long list of machine learning algorithm, given a data set, how do you decide which one to use?","You should say, the choice of machine learning algorithm solely depends of the type of data. If you are given a data set which is exhibits linearity, then linear regression would be the best algorithm to use. If you given to work on images, audios, then neural network would help you to build a robust model.
+
+If the data comprises of non linear interactions, then a boosting or bagging algorithm should be the choice. If the business requirement is to build a model which can be deployed, then we’ll use regression or a decision tree model (easy to interpret and explain) instead of black box algorithms like SVM, GBM etc.
+
+In short, there is no one master algorithm for all situations. We must be scrupulous enough to understand which algorithm to use."
+EDA,Do you suggest that treating a categorical variable as continuous variable would result in a better predictive model?,"For better predictions, categorical variable can be considered as a continuous variable only when the variable is ordinal in nature."
+Methodology,When does regularization becomes necessary in Machine Learning?,"Regularization becomes necessary when the model begins to ovefit / underfit. This technique introduces a cost term for bringing in more features with the objective function. Hence, it tries to push the coefficients for many variables to zero and hence reduce cost term. This helps to reduce model complexity so that the model can become better at predicting (generalizing).
+"
+"Linear Regression, Logistic Regression",OLS is to linear regression. Maximum likelihood is to logistic regression. Explain the statement.,"OLS and Maximum likelihood are the methods used by the respective regression methods to approximate the unknown parameter (coefficient) value. In simple words,
+
+Ordinary least square(OLS) is a method used in linear regression which approximates the parameters resulting in minimum distance between actual and predicted values. Maximum Likelihood helps in choosing the the values of parameters which maximizes the likelihood that the parameters are most likely to produce observed data."
+Logistic Regression,How is logistic regression done?,Logistic regression measures the relationship between the dependent variable (our label of what we want to predict) and one or more independent variables (our features) by estimating probability using its underlying logistic function (sigmoid).
+Decision Trees,Explain the steps in making a decision tree.,"Take the entire data set as input
+Calculate entropy of the target variable, as well as the predictor attributes
+Calculate your information gain of all attributes (we gain information on sorting different objects from each other)
+Choose the attribute with the highest information gain as the root node 
+Repeat the same procedure on every branch until the decision node of each branch is finalized"
+Random Forest,How do you build a random forest model?,"A random forest is built up of a number of decision trees. If you split the data into different packages and make a decision tree in each of the different groups of data, the random forest brings all those trees together.
+
+Steps to build a random forest model:
+Randomly select 'k' features from a total of 'm' features where k << m
+Among the 'k' features, calculate the node D using the best split point
+Split the node into daughter nodes using the best split
+Repeat steps two and three until leaf nodes are finalized 
+Build forest by repeating steps one to four for 'n' times to create 'n' number of trees "
+Methodology,How can you avoid overfitting your model?,"Overfitting refers to a model that is only set for a very small amount of data and ignores the bigger picture. There are three main methods to avoid overfitting:
+
+Keep the model simple—take fewer variables into account, thereby removing some of the noise in the training data
+Use cross-validation techniques, such as k folds cross-validation 
+Use regularization techniques, such as LASSO, that penalize certain model parameters if they're likely to cause overfitting"
+EDA,What are the feature selection methods used to select the right variables?,"There are two main methods for feature selection, i.e, filter, and wrapper methods.
+
+Filter Methods
+This involves: 
+
+Linear discrimination analysis
+ANOVA
+Chi-Square
+The best analogy for selecting features is ""bad data in, bad answer out."" When we're limiting or selecting the features, it's all about cleaning up the data coming in. 
+
+Wrapper Methods
+This involves: 
+
+Forward Selection: We test one feature at a time and keep adding them until we get a good fit
+Backward Selection: We test all the features and start removing them to see what works better
+Recursive Feature Elimination: Recursively looks through all the different features and how they pair together
+Wrapper methods are very labor-intensive, and high-end computers are needed if a lot of data analysis is performed with the wrapper method. "
+Methodology,What are dimensionality reduction and its benefits?,"Dimensionality reduction refers to the process of converting a data set with vast dimensions into data with fewer dimensions (fields) to convey similar information concisely. 
+
+This reduction helps in compressing data and reducing storage space. It also reduces computation time as fewer dimensions lead to less computing. It removes redundant features; for example, there's no point in storing a value in two different units (meters and inches). "
+Methodology,How should you maintain a deployed model?,"The steps to maintain a deployed model are:
+
+Monitor 
+Constant monitoring of all models is needed to determine their performance accuracy. When you change something, you want to figure out how your changes are going to affect things. This needs to be monitored to ensure it's doing what it's supposed to do.
+
+Evaluate
+Evaluation metrics of the current model are calculated to determine if a new algorithm is needed. 
+
+Compare
+The new models are compared to each other to determine which model performs the best. 
+
+Rebuild
+The best performing model is re-built on the current state of data.
+"
+Methodology,What are recommender systems?,"A recommender system predicts what a user would rate a specific product based on their preferences. It can be split into two different areas:
+
+Collaborative Filtering
+As an example, Last.fm recommends tracks that other users with similar interests play often. This is also commonly seen on Amazon after making a purchase; customers may notice the following message accompanied by product recommendations: ""Users who bought this also bought…""
+
+Content-based Filtering
+As an example: Pandora uses the properties of a song to recommend music with similar properties. Here, we look at content, instead of looking at who else is listening to music."
+KMeans,How can you select k for k-means? ,"We use the elbow method to select k for k-means clustering. The idea of the elbow method is to run k-means clustering on the data set where 'k' is the number of clusters.
+
+Within the sum of squares (WSS), it is defined as the sum of the squared distance between each member of the cluster and its centroid. "
+Statistics ,What is the significance of p-value?,"p-value typically ≤ 0.05
+
+This indicates strong evidence against the null hypothesis; so you reject the null hypothesis.
+
+p-value typically > 0.05
+
+This indicates weak evidence against the null hypothesis, so you accept the null hypothesis. 
+
+p-value at cutoff 0.05 
+
+This is considered to be marginal, meaning it could go either way."
+Time Series,How can time-series data be declared as stationery?,It is stationary when the variance and mean of the series are constant with time.
+Statistics ,Write the equation and calculate the precision and recall rate.,Precision = (True positive) / (True Positive + False Positive)        Recall Rate = (True Positive) / (Total Positive + False Negative)
+Methodology,People who bought this also bought…' recommendations seen on Amazon are a result of which algorithm?,"The recommendation engine is accomplished with collaborative filtering. Collaborative filtering explains the behavior of other users and their purchase history in terms of ratings, selection, etc. 
+
+The engine makes predictions on what might interest a person based on the preferences of other users. In this algorithm, item features are unknown. "
+Methodology,"We want to predict the probability of death from heart disease based on three risk factors: age, gender, and blood cholesterol level. What is the most appropriate algorithm for this case?","Choose the correct option:
+
+Logistic Regression 
+Linear Regression
+K-means clustering 
+Apriori algorithm
+The most appropriate algorithm for this case is A, logistic regression. "
+Methodology,Your organization has a website where visitors randomly receive one of two coupons. It is also possible that visitors to the website will not receive a coupon. You have been asked to determine if offering a coupon to website visitors has any impact on their purchase decisions. Which analysis method should you use?,"One-way ANOVA 
+K-means clustering
+Association rules 
+Student's t-test 
+The answer is A: One-way ANOVA"
+Statistics ,What are the feature vectors?,"A feature vector is an n-dimensional vector of numerical features that represent an object. In machine learning, feature vectors are used to represent numeric or symbolic characteristics (called features) of an object in a mathematical way that's easy to analyze."
+Decision Trees,What are the steps in making a decision tree?,"Take the entire data set as input.
+Look for a split that maximizes the separation of the classes. A split is any test that divides the data into two sets.
+Apply the split to the input data (divide step).
+Re-apply steps one and two to the divided data.
+Stop when you meet any stopping criteria.
+This step is called pruning. Clean up the tree if you went too far doing splits."
+Statistics ,What is root cause analysis? ,Root cause analysis was initially developed to analyze industrial accidents but is now widely used in other areas. It is a problem-solving technique used for isolating the root causes of faults or problems. A factor is called a root cause if its deduction from the problem-fault-sequence averts the final undesirable event from recurring.
+Logistic Regression,What is logistic regression?,Logistic regression is also known as the logit model. It is a technique used to forecast the binary outcome from a linear combination of predictor variables.
+Methodology,Explain cross-validation.,"Cross-validation is a model validation technique for evaluating how the outcomes of a statistical analysis will generalize to an independent data set. It is mainly used in backgrounds where the objective is to forecast and one wants to estimate how accurately a model will accomplish in practice. 
+
+The goal of cross-validation is to term a data set to test the model in the training phase (i.e. validation data set) to limit problems like overfitting and gain insight into how the model will generalize to an independent data set."
+Methodology,What is collaborative filtering?,"Most recommender systems use this filtering process to find patterns and information by collaborating perspectives, numerous data sources, and several agents."
+Methodology,Do gradient descent methods always converge to similar points?,"They do not, because in some cases, they reach a local minima or a local optima point. You would not reach the global optima point. This is governed by the data and the starting conditions."
+Methodology,What is the goal of A/B Testing?,"This is statistical hypothesis testing for randomized experiments with two variables, A and B. The objective of A/B testing is to detect any changes to a web page to maximize or increase the outcome of a strategy."
+Linear Regression,What are the drawbacks of the linear model?,"The assumption of linearity of the errors
+It can't be used for count outcomes or binary outcomes
+There are overfitting problems that it can't solve"
+Statistics ,What are eigenvalue and eigenvector?,"Eigenvalues are the directions along which a particular linear transformation acts by flipping, compressing, or stretching.
+
+Eigenvectors are for understanding linear transformations. In data analysis, we usually calculate the eigenvectors for a correlation or covariance matrix. "
+Statistics ,What is the difference between Point Estimates and Confidence Interval?,"Point Estimation gives us a particular value as an estimate of a population parameter. Method of Moments and Maximum Likelihood estimator methods are used to derive Point Estimators for population parameters.
+
+A confidence interval gives us a range of values which is likely to contain the population parameter. The confidence interval is generally preferred, as it tells us how likely this interval is to contain the population parameter. This likeliness or probability is called Confidence Level or Confidence coefficient and represented by 1 — alpha, where alpha is the level of significance."
+Statistics ,What do you understand by statistical power of sensitivity and how do you calculate it?,"Sensitivity is commonly used to validate the accuracy of a classifier (Logistic, SVM, Random Forest etc.).
+
+Sensitivity is nothing but “Predicted True events/ Total events”. True events here are the events which were true and model also predicted them as true."
+Statistics ,"Explain how a ROC curve works?
+",The ROC curve is a graphical representation of the contrast between true positive rates and false-positive rates at various thresholds. It is often used as a proxy for the trade-off between the sensitivity(true positive rate) and false-positive rate.
+Methodology,What is TF/IDF vectorization?,"TF–IDF is short for term frequency-inverse document frequency, is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. It is often used as a weighting factor in information retrieval and text mining.
+
+The TF–IDF value increases proportionally to the number of times a word appears in the document but is offset by the frequency of the word in the corpus, which helps to adjust for the fact that some words appear more frequently in general."
+Neural Network,Why we generally use Softmax non-linearity function as last operation in-network?,It is because it takes in a vector of real numbers and returns a probability distribution. It should be clear that the output is a probability distribution: each element is non-negative and the sum over all components is 1.
+SVM,Explain SVM algorithm in detail.,"SVM stands for support vector machine, it is a supervised machine learning algorithm which can be used for both Regression and Classification. If you have n features in your training data set, SVM tries to plot it in n-dimensional space with the value of each feature being the value of a particular coordinate. SVM uses hyperplanes to separate out different classes based on the provided kernel function."
+SVM,What are the different kernels in SVM?,"There are four types of kernels in SVM.
+
+Linear Kernel
+
+Polynomial kernel
+
+Radial basis kernel
+
+Sigmoid kernel"
+Methodology,What is the difference between Regression and classification ML techniques?,"Both Regression and classification machine learning techniques come under Supervised machine learning algorithms. In Supervised machine learning algorithm, we have to train the model using labelled data set, While training we have to explicitly provide the correct labels and algorithm tries to learn the pattern from input to output. If our labels are discrete values then it will a classification problem, e.g A,B etc. but if our labels are continuous values then it will be a regression problem, e.g 1.23, 1.333 etc."
+EDA,What are the various steps involved in an analytics project?,"Understand the Business problem
+
+Explore the data and become familiar with it.
+
+Prepare the data for modelling by detecting outliers, treating missing values, transforming variables, etc.
+
+After data preparation, start running the model, analyze the result and tweak the approach. This is an iterative step until the best possible outcome is achieved.
+
+Validate the model using a new data set.
+
+Start implementing the model and track the result to analyze the performance of the model over the period of time."
+Neural Network,What do you mean by Deep Learning? ,Deep Learning is nothing but a paradigm of machine learning which has shown incredible promise in recent years. This is because of the fact that Deep Learning shows a great analogy with the functioning of the human brain.
+Methodology,What is the difference between machine learning and deep learning?,"Machine learning is a field of computer science that gives computers the ability to learn without being explicitly programmed. Machine learning can be categorised in the following three categories.
+
+Supervised machine learning,
+
+Unsupervised machine learning,
+
+Reinforcement learning 
+
+Deep Learning is a subfield of machine learning concerned with algorithms inspired by the structure and function of the brain called artificial neural networks."
+Methodology,"What, in your opinion, is the reason for the popularity of Deep Learning in recent times?","Now although Deep Learning has been around for many years, the major breakthroughs from these techniques came just in recent years. This is because of two main reasons:
+
+The increase in the amount of data generated through various sources
+
+The growth in hardware resources required to run these models
+
+GPUs are multiple times faster and they help us build bigger and deeper deep learning models in comparatively less time than we required previously."
+Statistics ,"What Is the Cost Function?
+","Also referred to as “loss” or “error,” cost function is a measure to evaluate how good your model’s performance is. It’s used to compute the error of the output layer during backpropagation. We push that error backwards through the neural network and use that during the different training functions.
+"
+Statistics ,What Are Hyperparameters?,"With neural networks, you’re usually working with hyperparameters once the data is formatted correctly. A hyperparameter is a parameter whose value is set before the learning process begins. It determines how a network is trained and the structure of the network (such as the number of hidden units, the learning rate, epochs, etc.)."
+Neural Network,What Are the Different Layers on CNN?,"Convolutional Layer –  the layer that performs a convolutional operation, creating several smaller picture windows to go over the data.
+
+ReLU Layer – it brings non-linearity to the network and converts all the negative pixels to zero. The output is a rectified feature map.
+
+Pooling Layer – pooling is a down-sampling operation that reduces the dimensionality of the feature map.
+
+Fully Connected Layer – this layer recognizes and classifies the objects in the image."
+Neural Network,"What Is Pooling on CNN, and How Does It Work?",Pooling is used to reduce the spatial dimensions of a CNN. It performs down-sampling operations to reduce the dimensionality and creates a pooled feature map by sliding a filter matrix over the input matrix.
+Neural Network,What are Recurrent Neural Networks(RNNs)?,"RNNs are a type of artificial neural networks designed to recognise the pattern from the sequence of data such as Time series, stock market and government agencies etc. To understand recurrent nets, first, you have to understand the basics of feedforward nets.
+
+Both these networks RNN and feed-forward named after the way they channel information through a series of mathematical orations performed at the nodes of the network. One feeds information through straight(never touching the same node twice), while the other cycles it through a loop, and the latter are called recurrent.
+
+Recurrent networks, on the other hand, take as their input, not just the current input example they see, but also the what they have perceived previously in time.
+
+The decision a recurrent neural network reached at time t-1 affects the decision that it will reach one moment later at time t. So recurrent networks have two sources of input, the present and the recent past, which combine to determine how they respond to new data, much as we do in life.
+
+The error they generate will return via backpropagation and be used to adjust their weights until error can’t go any lower. Remember, the purpose of recurrent nets is to accurately classify sequential input. We rely on the backpropagation of error and gradient descent to do so.
+
+"
+Neural Network,How Does an LSTM Network Work?,"Long-Short-Term Memory (LSTM) is a special kind of recurrent neural network capable of learning long-term dependencies, remembering information for long periods as its default behaviour. There are three steps in an LSTM network:
+
+Step 1: The network decides what to forget and what to remember.
+Step 2: It selectively updates cell state values.
+Step 3: The network decides what part of the current state makes it to the output."
+Neural Network,What Is a Multi-layer Perceptron(MLP)?,"As in Neural Networks, MLPs have an input layer, a hidden layer, and an output layer. It has the same structure as a single layer perceptron with one or more hidden layers. A single layer perceptron can classify only linear separable classes with binary output (0,1), but MLP can classify nonlinear classes.
+
+Except for the input layer, each node in the other layers uses a nonlinear activation function. This means the input layers, the data coming in, and the activation function is based upon all nodes and weights being added together, producing the output. MLP uses a supervised learning method called “backpropagation.” In backpropagation, the neural network calculates the error with the help of cost function. It propagates this error backward from where it came (adjusts the weights to train the model more accurately)."
+Neural Network,Explain Gradient Descent.,"To Understand Gradient Descent, Let’s understand what is a Gradient first.
+
+A gradient measures how much the output of a function changes if you change the inputs a little bit. It simply measures the change in all weights with regard to the change in error. You can also think of a gradient as the slope of a function.
+
+Gradient Descent can be thought of climbing down to the bottom of a valley, instead of climbing up a hill.  This is because it is a minimization algorithm that minimizes a given function (Activation Function)."
+Neural Network,What is exploding gradients?,"While training an RNN, if you see exponentially growing (very large) error gradients which accumulate and result in very large updates to neural network model weights during training, they’re known as exploding gradients. At an extreme, the values of weights can become so large as to overflow and result in NaN values.
+
+This has the effect of your model is unstable and unable to learn from your training data."
+Neural Network,What is vanishing gradients?,"While training an RNN, your slope can become either too small; this makes the training difficult. When the slope is too small, the problem is known as a Vanishing Gradient. It leads to long training times, poor performance, and low accuracy."
+Neural Network,What is Back Propagation and Explain it’s Working.,"Backpropagation is a training algorithm used for multilayer neural network. In this method, we move the error from an end of the network to all weights inside the network and thus allowing efficient computation of the gradient.
+
+It has the following steps:
+
+Forward Propagation of Training Data
+
+Derivatives are computed using output and target
+
+Back Propagate for computing derivative of error wrt output activation
+
+Using previously calculated derivatives for output
+
+Update the Weights"
+Neural Network,What are the variants of Back Propagation?,"Stochastic Gradient Descent: We use only a single training example for calculation of gradient and update parameters.
+
+Batch Gradient Descent: We calculate the gradient for the whole dataset and perform the update at each iteration.
+
+Mini-batch Gradient Descent: It’s one of the most popular optimization algorithms. It’s a variant of Stochastic Gradient Descent and here instead of single training example, mini-batch of samples is used."
+Neural Network,What is an Auto-Encoder? ,"Auto-encoders are simple learning networks that aim to transform inputs into outputs with the minimum possible error. This means that we want the output to be as close to input as possible. We add a couple of layers between the input and the output, and the sizes of these layers are smaller than the input layer. The auto-encoder receives unlabelled input which is then encoded to reconstruct the input."
+Neural Network,What Is Dropout and Batch Normalization?,"Dropout is a technique of dropping out hidden and visible units of a network randomly to prevent overfitting of data (typically dropping 20 per cent of the nodes). It doubles the number of iterations needed to converge the network.
+
+Batch normalization is the technique to improve the performance and stability of neural networks by normalizing the inputs in every layer so that they have mean output activation of zero and standard deviation of one."
+Neural Network,What Do You Mean by Tensor in Tensorflow?,A tensor is a mathematical object represented as arrays of higher dimensions. These arrays of data with different dimensions and ranks fed as input to the neural network are called “Tensors.”
+Statistics ,What is the Central Limit Theorem and why is it important?,"Suppose that we are interested in estimating the average height among all people. Collecting data for every person in the world is impossible. While we can’t obtain a height measurement from everyone in the population, we can still sample some people. The question now becomes, what can we say about the average height of the entire population given a single sample. The Central Limit Theorem addresses this question exactly"
+Linear Regression,What are the assumptions required for linear regression?,"There are four major assumptions: 1. There is a linear relationship between the dependent variables and the regressors, meaning the model you are creating actually fits the data, 2. The errors or residuals of the data are normally distributed and independent from each other, 3. There is minimal multicollinearity between explanatory variables, and 4. Homoscedasticity. This means the variance around the regression line is the same for all values of the predictor variable."
+EDA,"Explain the 80/20 rule, and tell me about its importance in model validation.",People usually tend to start with a 80-20% split (80% training set – 20% test set) and split the training set once more into a 80-20% ratio to create the validation set.
+Neural Network,"Would you use batch normalization? If so, can you explain why?","The idea here is to standardize the data before sending it to another layer. This approach helps reduce the impact of previous layers by keeping the mean and variance constant. It also makes the layers independent of each other to achieve rapid convergence. For example, when we normalize features from 0 to 1 or from 1 to 100, it helps accelerate the learning cycle."
+EDA,How would you go about choosing an algorithm to solve a business problem?,"First, you have to develop a “problem statement” that’s based on the problem provided by the business. This step is essential because it’ll help ensure that you fully understand the type of problem and the input and the output of the problem you want to solve.
+
+The problem statement should be simple and no more than a single sentence. For example, let’s consider enterprise spam that requires an algorithm to identify it.
+
+The problem statement would be: “Is the email fake/spam or not?” In this scenario, the identification of whether it’s fake/spam will be the output.
+
+Once you have defined the problem statement, you have to identify the appropriate algorithm from the following:
+
+Any classification algorithm
+Any clustering algorithm
+Any regression algorithm
+Any recommendation algorithm
+Which algorithm you use will depend on the specific problem you’re trying to solve. In this scenario, you can move forward with a clustering algorithm and choose a k-means algorithm to achieve your goal of filtering spam from the email system.
+
+While examples aren’t always necessary when answering questions about artificial intelligence, sometimes it will help make it easier for you to get your point across."
+Methodology,"What’s the difference between inductive, deductive, and abductive learning?","Inductive learning describes smart algorithms that learn from a set of instances to draw conclusions. In statistical ML, k-nearest neighbor and support vector machine are good examples of inductive learning.
+
+There are three literals in (top-down) inductive learning:
+
+Arithmetic literals
+Equality and inequality
+Predicates
+In deductive learning, the smart algorithms draw conclusions by following a truth-generating structure (major premise, minor premise, and conclusion) and then improve them based on previous decisions. In this scenario, the ML algorithm engages in deductive reasoning using a decision tree.
+
+Abductive learning is a DL technique where conclusions are made based on various instances. With this approach, inductive reasoning is applied to causal relationships in deep neural networks."
+Methodology,What steps would you take to evaluate the effectiveness of your ML model?,"You have to first split the data set into training and test sets. You also have the option of using a cross-validation technique to further segment the data set into a composite of training and test sets within the data.
+
+Then you have to implement a choice selection of the performance metrics like the following:
+
+Confusion matrix
+Accuracy
+Precision
+Recall or sensitivity
+Specificity
+F1 score
+For the most part, you can use measures such as accuracy, confusion matrix, or F1 score. However, it’ll be critical for you to demonstrate that you understand the nuances of how each model can be measured by choosing the right performance measure to match the problem."
+Naive Bayes,What is Bayes’ Theorem? How is it useful in a machine learning context?,"Bayes’ Theorem gives you the posterior probability of an event given what is known as prior knowledge.
+
+Mathematically, it’s expressed as the true positive rate of a condition sample divided by the sum of the false positive rate of the population and the true positive rate of a condition. Say you had a 60% chance of actually having the flu after a flu test, but out of people who had the flu, the test will be false 50% of the time, and the overall population only has a 5% chance of having the flu. Would you actually have a 60% chance of having the flu after having a positive test?
+
+Bayes’ Theorem says no. It says that you have a (.6 * 0.05) (True Positive Rate of a Condition Sample) / (.6*0.05)(True Positive Rate of a Condition Sample) + (.5*0.95) (False Positive Rate of a Population)  = 0.0594 or 5.94% chance of getting a flu.
+
+Bayes’ Theorem is the basis behind a branch of machine learning that most notably includes the Naive Bayes classifier. That’s something important to consider when you’re faced with machine learning interview questions."
+Naive Bayes,Why is “Naive” Bayes naive?,"Despite its practical applications, especially in text mining, Naive Bayes is considered “Naive” because it makes an assumption that is virtually impossible to see in real-life data: the conditional probability is calculated as the pure product of the individual probabilities of components. This implies the absolute independence of features — a condition probably never met in real life.
+
+As a Quora commenter put it whimsically, a Naive Bayes classifier that figured out that you liked pickles and ice cream would probably naively recommend you a pickle ice cream."
+Linear Regression,Explain the difference between L1 and L2 regularization.,"L2 regularization tends to spread error among all the terms, while L1 is more binary/sparse, with many variables either being assigned a 1 or 0 in weighting. L1 corresponds to setting a Laplacean prior on the terms, while L2 corresponds to a Gaussian prior."
+Statistics ,What’s a Fourier transform?,"A Fourier transform is a generic method to decompose generic functions into a superposition of symmetric functions. Or as this more intuitive tutorial puts it, given a smoothie, it’s how we find the recipe. The Fourier transform finds the set of cycle speeds, amplitudes, and phases to match any time signal. A Fourier transform converts a signal from time to frequency domain—it’s a very common way to extract features from audio signals or other time series such as sensor data."
+Methodology,"What is deep learning, and how does it contrast with other machine learning algorithms?","Deep learning is a subset of machine learning that is concerned with neural networks: how to use backpropagation and certain principles from neuroscience to more accurately model large sets of unlabelled or semi-structured data. In that sense, deep learning represents an unsupervised learning algorithm that learns representations of data through the use of neural nets."
+Methodology,What’s the difference between a generative and discriminative model?,A generative model will learn categories of data while a discriminative model will simply learn the distinction between different categories of data. Discriminative models will generally outperform generative models on classification tasks.
+Statistics ,What’s the F1 score? How would you use it?,"The F1 score is a measure of a model’s performance. It is a weighted average of the precision and recall of a model, with results tending to 1 being the best, and those tending to 0 being the worst. You would use it in classification tests where true negatives don’t matter much."
+Methodology,When should you use classification over regression?,"Classification produces discrete values and dataset to strict categories, while regression gives you continuous results that allow you to better distinguish differences between individual points. You would use classification over regression if you wanted your results to reflect the belongingness of data points in your dataset to certain explicit categories."
+Methodology,What’s the “kernel trick” and how is it useful?,"The Kernel trick involves kernel functions that can enable in higher-dimension spaces without explicitly calculating the coordinates of points within that dimension: instead, kernel functions compute the inner products between the images of all pairs of data in a feature space. This allows them the very useful attribute of calculating the coordinates of higher dimensions while being computationally cheaper than the explicit calculation of said coordinates. Many algorithms can be expressed in terms of inner products. Using the kernel trick enables us effectively run algorithms in a high-dimensional space with lower-dimensional data."
+Methodology,Do you have experience with Spark or big data tools for machine learning?,"You’ll want to get familiar with the meaning of big data for different companies and the different tools they’ll want. Spark is the big data tool most in demand now, able to handle immense datasets with speed. Be honest if you don’t have experience with the tools demanded, but also take a look at job descriptions and see what tools pop up: you’ll want to invest in familiarizing yourself with them."
+Methodology,How would you build a data pipeline?,"Data pipelines are the bread and butter of machine learning engineers, who take data science models and find ways to automate and scale them. Make sure you’re familiar with the tools to build data pipelines (such as Apache Airflow) and the platforms where you can host models and pipelines (such as Google Cloud or AWS or Azure). Explain the steps required in a functioning data pipeline and talk through your actual experience building and scaling them in production. "
+EDA,Is more data always better?,"Statistically,
+It depends on the quality of your data, for example, if your data is biased, just getting more data won’t help.
+It depends on your model. If your model suffers from high bias, getting more data won’t improve your test results beyond a point. You’d need to add more features, etc.
+
+Practically,
+Also there’s a tradeoff between having more data and the additional storage, computational power, memory it requires. Hence, always think about the cost of having more data."
+EDA,"How can you make sure that you don’t analyze something that ends up meaningless?
+","Proper exploratory data analysis.
+In every data analysis task, there's the exploratory phase where you're just graphing things, testing things on small sets of the data, summarizing simple statistics, and getting rough ideas of what hypotheses you might want to pursue further.
+
+Then there's the exploitatory phase, where you look deeply into a set of hypotheses. 
+
+The exploratory phase will generate lots of possible hypotheses, and the exploitatory phase will let you really understand a few of them. Balance the two and you'll prevent yourself from wasting time on many things that end up meaningless, although not all."
+EDA,How can you determine which features are the most important in your model?,"Run the features though a Gradient Boosting Machine or Random Forest to generate plots of relative importance and information gain for each feature in the ensembles.
+
+Look at the variables added in forward variable selection "
+Methodology,What are some ways I can make my model more robust to outliers?,"We can have regularization such as L1 or L2 to reduce variance (increase bias).
+
+Changes to the algorithm:
+Use tree-based methods instead of regression methods as they are more resistant to outliers. For statistical tests, use non parametric tests instead of parametric ones.
+Use robust error metrics such as MAE or Huber Loss instead of MSE.
+
+Changes to the data:
+Winsorizing the data
+Transforming the data (e.g. log)
+Remove them only if you’re certain they’re anomalies not worth predicting"
+Methodology,"What are some differences you would expect in a model that minimizes squared error, versus a model that minimizes absolute error? In which cases would each error metric be appropriate?","MSE is more strict to having outliers. MAE is more robust in that sense, but is harder to fit the model for because it cannot be numerically optimized. So when there are less variability in the model and the model is computationally easy to fit, we should use MAE, and if that’s not the case, we should use MSE.
+MSE: easier to compute the gradient, MAE: linear programming needed to compute the gradient
+MAE more robust to outliers. If the consequences of large errors are great, use MSE
+MSE corresponds to maximizing likelihood of Gaussian random variables"
+Methodology,What error metric would you use to evaluate how good a binary classifier is? What if the classes are imbalanced? What if there are more than 2 groups?,"Accuracy: proportion of instances you predict correctly. Pros: intuitive, easy to explain, Cons: works poorly when the class labels are imbalanced and the signal from the data is weak
+AUROC: plot fpr on the x axis and tpr on the y axis for different threshold. Given a random positive instance and a random negative instance, the AUC is the probability that you can identify who's who. Pros: Works well when testing the ability of distinguishing the two classes, Cons: can’t interpret predictions as probabilities (because AUC is determined by rankings), so can’t explain the uncertainty of the model
+logloss/deviance: Pros: error metric based on probabilities, Cons: very sensitive to false positives, negatives
+When there are more than 2 groups, we can have k binary classifications and add them up for logloss. Some metrics like AUC is only applicable in the binary case."
+Methodology,"What are various ways to predict a binary response variable? Can you compare two of them and tell me when one would be more appropriate? What’s the difference between these? (SVM, Logistic Regression, Naive Bayes, Decision Tree, etc.)","Things to look at: N, P, linearly seperable?, features independent?, likely to overfit?, speed, performance, memory usage
+Logistic Regression
+features roughly linear, problem roughly linearly separable
+robust to noise, use l1,l2 regularization for model selection, avoid overfitting
+the output come as probabilities
+efficient and the computation can be distributed
+can be used as a baseline for other algorithms
+(-) can hardly handle categorical features
+SVM
+with a nonlinear kernel, can deal with problems that are not linearly separable
+(-) slow to train, for most industry scale applications, not really efficient
+Naive Bayes
+computationally efficient when P is large by alleviating the curse of dimensionality
+works surprisingly well for some cases even if the condition doesn’t hold
+with word frequencies as features, the independence assumption can be seen reasonable. So the algorithm can be used in text categorization
+(-) conditional independence of every other feature should be met
+Tree Ensembles
+good for large N and large P, can deal with categorical features very well
+non parametric, so no need to worry about outliers
+GBT’s work better but the parameters are harder to tune
+RF works out of the box, but usually performs worse than GBT
+Deep Learning
+works well for some classification tasks (e.g. image)
+used to squeeze something out of the problem"
+Methodology,"Given training data on tweets and their retweets, how would you predict the number of retweets of a given tweet after 7 days after only observing 2 days worth of data?","Build a time series model with the training data with a seven day cycle and then use that for a new data with only 2 days data.
+Ask someone for more details.
+Build a regression function to estimate the number of retweets as a function of time t
+to determine if one regression function can be built, see if there are clusters in terms of the trends in the number of retweets
+if not, we have to add features to the regression function
+features + # of retweets on the first and the second day -> predict the seventh day"
+Methodology,"In an A/B test, how can you check if assignment to the various buckets was truly random?","Plot the distributions of multiple features for both A and B and make sure that they have the same shape. More rigorously, we can conduct a permutation test to see if the distributions are the same.
+MANOVA to compare different means"
+Methodology,"What might be the benefits of running an A/A test, where you have two buckets who are exposed to the exact same product?",Verify the sampling algorithm is random.
+Methodology,What would be the hazards of letting users sneak a peek at the other bucket in an A/B test?,"The user might not act the same suppose had they not seen the other bucket. You are essentially adding additional variables of whether the user peeked the other bucket, which are not random across groups."
+Methodology,"How would you run an A/B test for many variants, say 20 or more?","one control, 20 treatment, if the sample size for each group is big enough.
+Ways to attempt to correct for this include changing your confidence level (e.g. Bonferroni Correction) or doing family-wide tests before you dive in to the individual metrics (e.g. Fisher's Protected LSD)."
+Methodology,How would you run an A/B test if the observations are extremely right-skewed?,"lower the variability by modifying the KPI
+cap values
+percentile metrics
+log transform"
+Statistics ,What is a p-value? What is the difference between type-1 and type-2 error?,"A p-value is defined such that under the null hypothesis less than the fraction p of events have parameter values more extreme than the observed parameter. It is not the probability that the null hypothesis is wrong.
+type-1 error: rejecting Ho when Ho is true
+type-2 error: not rejecting Ho when Ha is true"
+Statistics ,You are AirBnB and you want to test the hypothesis that a greater number of photographs increases the chances that a buyer selects the listing. How would you test this hypothesis?,"For randomly selected listings with more than 1 pictures, hide 1 random picture for group A, and show all for group B. Compare the booking rate for the two groups."
+Statistics ,How would you design an experiment to determine the impact of latency on user engagement?,"The best way I know to quantify the impact of performance is to isolate just that factor using a slowdown experiment, i.e., add a delay in an A/B test."
+Statistics ,What is maximum likelihood estimation? Could there be any case where it doesn’t exist?,"A method for parameter optimization (fitting a model). We choose parameters so as to maximize the likelihood function (how likely the outcome would happen given the current data and our model).
+maximum likelihood estimation (MLE) is a method of estimating the parameters of a statistical model given observations, by finding the parameter values that maximize the likelihood of making the observations given the parameters. MLE can be seen as a special case of the maximum a posteriori estimation (MAP) that assumes a uniform prior distribution of the parameters, or as a variant of the MAP that ignores the prior and which therefore is unregularized.
+for gaussian mixtures, non parametric models, it doesn’t exist."
+Statistics ,What is a confidence interval and how do you interpret it?,"For example, 95% confidence interval is an interval that when constructed for a set of samples each sampled in the same way, the constructed intervals include the true mean 95% of the time.
+if confidence intervals are constructed using a given confidence level in an infinite number of independent experiments, the proportion of those intervals that contain the true value of the parameter will match the confidence level."
+Statistics ,What is Selection Bias?,"Selection bias is a kind of error that occurs when the researcher decides who is going to be studied. It is usually associated with research where the selection of participants isn’t random. It is sometimes referred to as the selection effect. It is the distortion of statistical analysis, resulting from the method of collecting samples. If the selection bias is not taken into account, then some conclusions of the study may not be accurate.
+The types of selection bias include:
+Sampling bias: It is a systematic error due to a non-random sample of a population causing some members of the population to be less likely to be included than others resulting in a biased sample.
+Time Interval bias: A trial may be terminated early at an extreme value (often for ethical reasons), but the extreme value is likely to be reached by the variable with the largest variance, even if all variables have a similar mean.
+Data: When specific subsets of data are chosen to support a conclusion or rejection of bad data on arbitrary grounds, instead of according to previously stated or generally agreed criteria.
+Attrition: Attrition bias is a kind of selection bias caused by attrition (loss of participants) discounting trial subjects/tests that did not run to completion."
+Methodology,What is regression? Which models can you use to solve a regression problem?,"Regression is a part of supervised ML. Regression models investigate the relationship between a dependent (target) and independent variable (s) (predictor). Here are some common regression models
+
+Linear Regression establishes a linear relationship between target and predictor (s). It predicts a numeric value and has a shape of a straight line.
+Polynomial Regression has a regression equation with the power of independent variable more than 1. It is a curve that fits into the data points.
+Ridge Regression helps when predictors are highly correlated (multicollinearity problem). It penalizes the squares of regression coefficients but doesn’t allow the coefficients to reach zeros (uses L2 regularization).
+Lasso Regression penalizes the absolute values of regression coefficients and allows some of the coefficients to reach absolute zero (thereby allowing feature selection)."
+Linear Regression,What are the main assumptions of linear regression?,"There are several assumptions of linear regression. If any of them is violated, model predictions and interpretation may be worthless or misleading.
+
+Linear relationship between features and target variable.
+Additivity means that the effect of changes in one of the features on the target variable does not depend on values of other features. For example, a model for predicting revenue of a company have of two features - the number of items a sold and the number of items b sold. When company sells more items a the revenue increases and this is independent of the number of items b sold. But, if customers who buy a stop buying b, the additivity assumption is violated.
+Features are not correlated (no collinearity) since it can be difficult to separate out the individual effects of collinear features on the target variable.
+Errors are independently and identically normally distributed (yi = B0 + B1*x1i + ... + errori):
+No correlation between errors (consecutive errors in the case of time series data).
+Constant variance of errors - homoscedasticity. For example, in case of time series, seasonal patterns can increase errors in seasons with higher activity.
+Errors are normaly distributed, otherwise some features will have more influence on the target variable than to others. If the error distribution is significantly non-normal, confidence intervals may be too wide or too narrow."
+Statistics ,What’s the normal distribution? Why do we care about it?,"The normal distribution derives its importance from the Central Limit Theorem, which states that if we draw a large enough number of samples, their mean will follow a normal distribution regardless of the initial distribution of the sample, i.e the distribution of the mean of the samples is normal. It is important that each sample is independent from the other.
+
+This is powerful because it helps us study processes whose population distribution is unknown to us."
+Statistics ,How do we check if a variable follows the normal distribution?,"Plot a histogram out of the sampled data. If you can fit the bell-shaped ""normal"" curve to the histogram, then the hypothesis that the underlying random variable follows the normal distribution can not be rejected.
+Check Skewness and Kurtosis of the sampled data. Skewness = 0 and kurtosis = 3 are typical for a normal distribution, so the farther away they are from these values, the more non-normal the distribution.
+Use Kolmogorov-Smirnov or/and Shapiro-Wilk tests for normality. They take into account both Skewness and Kurtosis simultaneously.
+Check for Quantile-Quantile plot. It is a scatterplot created by plotting two sets of quantiles against one another. Normal Q-Q plot place the data points in a roughly straight line."
+Methodology,What if we want to build a model for predicting prices? Are prices distributed normally? Do we need to do any pre-processing for prices?,"Data is not normal. Specially, real-world datasets or uncleaned datasets always have certain skewness. Same goes for the price prediction. Price of houses or any other thing under consideration depends on a number of factors. So, there's a great chance of presence of some skewed values i.e outliers if we talk in data science terms.
+
+Yes, you may need to do pre-processing. Most probably, you will need to remove the outliers to make your distribution near-to-normal."
+Linear Regression,What methods for solving linear regression do you know?,"To solve linear regression, you need to find the coefficients  which minimize the sum of squared errors.
+
+Matrix Algebra method: Let's say you have X, a matrix of features, and y, a vector with the values you want to predict. After going through the matrix algebra and minimization problem, you get this solution: .
+
+But solving this requires you to find an inverse, which can be time-consuming, if not impossible. Luckily, there are methods like Singular Value Decomposition (SVD) or QR Decomposition that can reliably calculate this part  (called the pseudo-inverse) without actually needing to find an inverse. The popular python ML library sklearn uses SVD to solve least squares."
+Neural Network,What is gradient descent? How does it work?,"Gradient descent is an algorithm that uses calculus concept of gradient to try and reach local or global minima. It works by taking the negative of the gradient in a point of a given function, and updating that point repeatedly using the calculated negative gradient, until the algorithm reaches a local or global minimum, which will cause future iterations of the algorithm to return values that are equal or too close to the current point. It is widely used in machine learning applications."
+Statistics ,What is the normal equation?,Normal equations are equations obtained by setting equal to zero the partial derivatives of the sum of squared errors (least squares); normal equations allow one to estimate the parameters of a multiple linear regression.
+Methodology,What is SGD  —  stochastic gradient descent? What’s the difference with the usual gradient descent?,"In both gradient descent (GD) and stochastic gradient descent (SGD), you update a set of parameters in an iterative manner to minimize an error function.
+
+While in GD, you have to run through ALL the samples in your training set to do a single update for a parameter in a particular iteration, in SGD, on the other hand, you use ONLY ONE or SUBSET of training sample from your training set to do the update for a parameter in a particular iteration. If you use SUBSET, it is called Minibatch Stochastic gradient Descent.
+"
+Methodology,Which metrics for evaluating regression models do you know?,"Mean Squared Error(MSE)
+Root Mean Squared Error(RMSE)
+Mean Absolute Error(MAE)
+R² or Coefficient of Determination
+Adjusted R²"
+Statistics ,What are MSE and RMSE?,MSE stands for Mean Square Error while RMSE stands for Root Mean Square Error. They are metrics with which we can evaluate models.
+Statistics ,What is the bias-variance trade-off?,"Bias is the error introduced by approximating the true underlying function, which can be quite complex, by a simpler model. Variance is a model sensitivity to changes in the training dataset.
+
+Bias-variance trade-off is a relationship between the expected test error and the variance and the bias - both contribute to the level of the test error and ideally should be as small as possible:
+
+ExpectedTestError = Variance + Bias² + IrreducibleError
+But as a model complexity increases, the bias decreases and the variance increases which leads to overfitting. And vice versa, model simplification helps to decrease the variance but it increases the bias which leads to underfitting."
+Methodology,What is K-fold cross-validation? ,"K fold cross validation is a method of cross validation where we select a hyperparameter k. The dataset is now divided into k parts. Now, we take the 1st part as validation set and remaining k-1 as training set. Then we take the 2nd part as validation set and remaining k-1 parts as training set. Like this, each part is used as validation set once and the remaining k-1 parts are taken together and used as training set. It should not be used in a time series data."
+Methodology,How do we choose K in K-fold cross-validation? What’s your favorite K?,"There are two things to consider while deciding K: the number of models we get and the size of validation set. We do not want the number of models to be too less, like 2 or 3. At least 4 models give a less biased decision on the metrics. On the other hand, we would want the dataset to be at least 20-25% of the entire data. So that at least a ratio of 3:1 between training and validation set is maintained.
+I tend to use 4 for small datasets and 5 for large ones as K."
+Logistic Regression,Is logistic regression a linear model? Why?,"Yes, Logistic Regression is considered a generalized linear model because the outcome always depends on the sum of the inputs and parameters. Or in other words, the output cannot depend on the product (or quotient, etc.) of its parameters."
+Logistic Regression,What is logistic regression? When do we need to use it?,"Logistic regression is a Machine Learning algorithm that is used for binary classification. You should use logistic regression when your Y variable takes only two values, e.g. True and False, ""spam"" and ""not spam"", ""churn"" and ""not churn"" and so on. The variable is said to be a ""binary"" or ""dichotomous"".
+"
+Neural Network,What is sigmoid? What does it do?,"A sigmoid function is a type of activation function, and more specifically defined as a squashing function. Squashing functions limit the output to a range between 0 and 1, making these functions useful in the prediction of probabilities.
+
+Sigmod(x) = 1/(1+e^{-x})"
+Statistics ,Precision-recall trade-off,"Tradeoff means increasing one parameter would lead to decreasing of other. Precision-recall tradeoff occur due to increasing one of the parameter(precision or recall) while keeping the model same.
+
+In an ideal scenario where there is a perfectly separable data, both precision and recall can get maximum value of 1.0. But in most of the practical situations, there is noise in the dataset and the dataset is not perfectly separable. There might be some points of positive class closer to the negative class and vice versa. In such cases, shifting the decision boundary can either increase the precision or recall but not both. Increasing one parameter leads to decreasing of the other."
+Statistics ,What is the ROC curve? When to use it?,ROC stands for Receiver Operating Characteristics. The diagrammatic representation that shows the contrast between true positive rate vs false positive rate. It is used when we need to predict the probability of the binary outcome.
+Statistics ,What is AUC (AU ROC)? When to use it?,"AUC stands for Area Under the ROC Curve. ROC is a probability curve and AUC represents degree or measure of separability. It's used when we need to value how much model is capable of distinguishing between classes. The value is between 0 and 1, the higher the better."
+Statistics ,How to interpret the AU ROC score?,"AUC score is the value of Area Under the ROC Curve.
+
+An excellent model has AUC near to the 1 which means it has good measure of separability. A poor model has AUC near to the 0 which means it has worst measure of separability. When AUC score is 0.5, it means model has no class separation capacity whatsoever."
+Statistics ,What is the PR (precision-recall) curve?,A precision-recall curve (or PR Curve) is a plot of the precision (y-axis) and the recall (x-axis) for different probability thresholds. Precision-recall curves (PR curves) are recommended for highly skewed domains where ROC curves may provide an excessively optimistic view of the performance.
+Statistics ,What is the area under the PR curve? Is it a useful metric?,"The Precision-Recall AUC is just like the ROC AUC, in that it summarizes the curve with a range of threshold values as a single score.
+
+A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate."
+Statistics ,In which cases AU PR is better than AU ROC?,"What is different however is that AU ROC looks at a true positive rate TPR and false positive rate FPR while AU PR looks at positive predictive value PPV and true positive rate TPR.
+
+Typically, if true negatives are not meaningful to the problem or you care more about the positive class, AU PR is typically going to be more useful; otherwise, If you care equally about the positive and negative class or your dataset is quite balanced, then going with AU ROC is a good idea."
+EDA,What do we do with categorical variables?,"Categorical variables must be encoded before they can be used as features to train a machine learning model. There are various encoding techniques, including:
+
+One-hot encoding
+Label encoding
+Ordinal encoding
+Target encoding"
+Linear Regression,What kind of regularization techniques are applicable to linear models?,"AIC/BIC, Ridge regression, Lasso, Elastic Net, Basis pursuit denoising, Rudin–Osher–Fatemi model (TV), Potts model, RLAD, Dantzig Selector,SLOPE"
+Linear Regression,What’s the effect of L2 regularization on the weights of a linear model?,"L2 regularization penalizes larger weights more severely (due to the squared penalty term), which encourages weight values to decay toward zero."
+Linear Regression,How L1 regularization looks like in a linear model?,L1 regularization adds a penalty term to our cost function which is equal to the sum of modules of models coefficients multiplied by a lambda hyperparameter.
+Linear Regression,What’s the difference between L2 and L1 regularization?,"Penalty terms: L1 regularization uses the sum of the absolute values of the weights, while L2 regularization uses the sum of the weights squared.
+Feature selection: L1 performs feature selection by reducing the coefficients of some predictors to 0, while L2 does not.
+Computational efficiency: L2 has an analytical solution, while L1 does not.
+Multicollinearity: L2 addresses multicollinearity by constraining the coefficient norm."
+Linear Regression,Can we have both L1 and L2 regularization components in a linear model?,"Yes, elastic net regularization combines L1 and L2 regularization."
+Linear Regression,What’s the interpretation of the bias term in linear models?,"Bias is simply, a difference between predicted value and actual/true value. It can be interpreted as the distance from the average prediction and true value i.e. true value minus mean(predictions). But dont get confused between accuracy and bias."
+Linear Regression,How do we interpret weights in linear models?,"Without normalizing weights or variables, if you increase the corresponding predictor by one unit, the coefficient represents on average how much the output changes. By the way, this interpretation still works for logistic regression - if you increase the corresponding predictor by one unit, the weight represents the change in the log of the odds.
+
+If the variables are normalized, we can interpret weights in linear models like the importance of this variable in the predicted result."
+Linear Regression,If a weight for one variable is higher than for another  —  can we say that this variable is more important?,"Yes - if your predictor variables are normalized.
+
+Without normalization, the weight represents the change in the output per unit change in the predictor. If you have a predictor with a huge range and scale that is used to predict an output with a very small range - for example, using each nation's GDP to predict maternal mortality rates - your coefficient should be very small. That does not necessarily mean that this predictor variable is not important compared to the others."
+Linear Regression,When do we need to perform feature normalization for linear models? When it’s okay not to do it?,"Feature normalization is necessary for L1 and L2 regularizations. The idea of both methods is to penalize all the features relatively equally. This can't be done effectively if every feature is scaled differently.
+
+Linear regression without regularization techniques can be used without feature normalization. Also, regularization can help to make the analytical solution more stable, — it adds the regularization matrix to the feature matrix before inverting it."
+EDA,Which feature selection techniques do you know?,"Here are some of the feature selections:
+
+Principal Component Analysis
+Neighborhood Component Analysis
+ReliefF Algorithm"
+EDA,Can we use L1 regularization for feature selection?,"Yes, because the nature of L1 regularization will lead to sparse coefficients of features. Feature selection can be done by keeping only features with non-zero coefficients."
+Decision Trees,What are the benefits of a single decision tree compared to more complex models?,"easy to implement
+fast training
+fast inference
+good explainability"
+Decision Trees,How can we know which features are more important for the decision tree model?,"Often, we want to find a split such that it minimizes the sum of the node impurities. The impurity criterion is a parameter of decision trees. Popular methods to measure the impurity are the Gini impurity and the entropy describing the information gain."
+Random Forest,Why do we need randomization in random forest?,"Random forest in an extention of the bagging algorithm which takes random data samples from the training dataset (with replacement), trains several models and averages predictions. In addition to that, each time a split in a tree is considered, random forest takes a random sample of m features from full set of n features (with replacement) and uses this subset of features as candidates for the split (for example, m = sqrt(n)).
+
+Training decision trees on random data samples from the training dataset reduces variance. Sampling features for each split in a decision tree decorrelates trees."
+Random Forest,How do we select the depth of the trees in random forest?,"The greater the depth, the greater amount of information is extracted from the tree, however, there is a limit to this, and the algorithm even if defensive against overfitting may learn complex features of noise present in data and as a result, may overfit on noise. Hence, there is no hard thumb rule in deciding the depth, but literature suggests a few tips on tuning the depth of the tree to prevent overfitting:
+
+limit the maximum depth of a tree
+limit the number of test nodes
+limit the minimum number of objects at a node required to split
+do not split a node when, at least, one of the resulting subsample sizes is below a given threshold
+stop developing a node if it does not sufficiently improve the fit."
+Random Forest,How do we know how many trees we need in random forest?,"The number of trees in random forest is worked by n_estimators, and a random forest reduces overfitting by increasing the number of trees. There is no fixed thumb rule to decide the number of trees in a random forest, it is rather fine tuned with the data, typically starting off by taking the square of the number of features (n) present in the data followed by tuning until we get the optimal results."
+EDA,What happens when we have correlated features in our data?,"In random forest, since random forest samples some features to build each tree, the information contained in correlated features is twice as much likely to be picked than any other information contained in other features.
+
+In general, when you are adding correlated features, it means that they linearly contains the same information and thus it will reduce the robustness of your model. Each time you train your model, your model might pick one feature or the other to ""do the same job"" i.e. explain some variance, reduce entropy, etc.
+"
+Gradient Boosting,What is gradient boosting trees?,"Gradient boosting is a machine learning technique for regression and classification problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees."
+"Random Forest, Gradient Boosting",What’s the difference between random forest and gradient boosting?,"Random Forests builds each tree independently while Gradient Boosting builds one tree at a time.
+Random Forests combine results at the end of the process (by averaging or ""majority rules"") while Gradient Boosting combines results along the way."
+Gradient Boosting,Is it possible to parallelize training of a gradient boosting model? How to do it?,"Yes, different frameworks provide different options to make training faster, using GPUs to speed up the process by making it highly parallelizable.For example, for XGBoost tree_method = 'gpu_hist' option makes training faster by use of GPUs."
+"XGBoost, Gradient Boosting",How do you approach tuning parameters in XGBoost or LightGBM?,"Depending upon the dataset, parameter tuning can be done manually or using hyperparameter optimization frameworks such as optuna and hyperopt. In manual parameter tuning, we need to be aware of max-depth, min_samples_leaf and min_samples_split so that our model does not overfit the data but try to predict generalized characteristics of data (basically keeping variance and bias low for our model)."
+Gradient Boosting,How do you select the number of trees in the gradient boosting model?,"Most implementations of gradient boosting are configured by default with a relatively small number of trees, such as hundreds or thousands. Using scikit-learn we can perform a grid search of the n_estimators model parameter"
+Methodology,Which hyper-parameter tuning strategies (in general) do you know? What’s the difference between grid search parameter tuning strategy and random search? When to use one or another?,"There are several strategies for hyper-tuning but I would argue that the three most popular nowadays are the following:
+
+Grid Search is an exhaustive approach such that for each hyper-parameter, the user needs to manually give a list of values for the algorithm to try. After these values are selected, grid search then evaluates the algorithm using each and every combination of hyper-parameters and returns the combination that gives the optimal result (i.e. lowest MAE). Because grid search evaluates the given algorithm using all combinations, it's easy to see that this can be quite computationally expensive and can lead to sub-optimal results specifically since the user needs to specify specific values for these hyper-parameters, which is prone for error and requires domain knowledge.
+
+Random Search is similar to grid search but differs in the sense that rather than specifying which values to try for each hyper-parameter, an upper and lower bound of values for each hyper-parameter is given instead. With uniform probability, random values within these bounds are then chosen and similarly, the best combination is returned to the user. Although this seems less intuitive, no domain knowledge is necessary and theoretically much more of the parameter space can be explored.
+
+In a completely different framework, Bayesian Optimization is thought of as a more statistical way of optimization and is commonly used when using neural networks, specifically since one evaluation of a neural network can be computationally costly. In numerous research papers, this method heavily outperforms Grid Search and Random Search and is currently used on the Google Cloud Platform as well as AWS. Because an in-depth explanation requires a heavy background in bayesian statistics and gaussian processes (and maybe even some game theory), a ""simple"" explanation is that a much simpler/faster acquisition function intelligently chooses (using a surrogate function such as probability of improvement or GP-UCB) which hyper-parameter values to try on the computationally expensive, original algorithm. Using the result of the initial combination of values on the expensive/original function, the acquisition function takes the result of the expensive/original algorithm into account and uses it as its prior knowledge to again come up with another set of hyper-parameters to choose during the next iteration. This process continues either for a specified number of iterations or for a specified amount of time and similarly the combination of hyper-parameters that performs the best on the expensive/original algorithm is chosen.
+"
+Neural Network,What kind of problems neural nets can solve?,"Neural nets are good at solving non-linear problems. Some good examples are problems that are relatively easy for humans (because of experience, intuition, understanding, etc), but difficult for traditional regression models: speech recognition, handwriting recognition, image identification, etc."
+Neural Network,How does a usual fully-connected feed-forward neural network work?,"In a usual fully-connected feed-forward network, each neuron receives input from every element of the previous layer and thus the receptive field of a neuron is the entire previous layer. They are usually used to represent feature vectors for input data in classification problems but can be expensive to train because of the number of computations involved."
+Neural Network,Why do we need activation functions?,"The main idea of using neural networks is to learn complex nonlinear functions. If we are not using an activation function in between different layers of a neural network, we are just stacking up multiple linear layers one on top of another and this leads to learning a linear function. The Nonlinearity comes only with the activation function, this is the reason we need activation functions."
+Neural Network,What are the problems with sigmoid as an activation function?,The derivative of the sigmoid function for large positive or negative numbers is almost zero. From this comes the problem of vanishing gradient — during the backpropagation our net will not learn (or will learn drastically slow). One possible way to solve this problem is to use ReLU activation function.
+Neural Network,What is ReLU? How is it better than sigmoid or tanh?,"ReLU is an abbreviation for Rectified Linear Unit. It is an activation function which has the value 0 for all negative values and the value f(x) = x for all positive values. The ReLU has a simple activation function which makes it fast to compute and while the sigmoid and tanh activation functions saturate at higher values, the ReLU has a potentially infinite activation, which addresses the problem of vanishing gradients."
+Neural Network,How we can initialize the weights of a neural network?,"Proper initialization of weight matrix in neural network is very necessary. Simply we can say there are two ways for initializtions.
+
+Initializing weights with zeroes. Setting weights to zero makes your network no better than a linear model. It is important to note that setting biases to 0 will not create any troubles as non zero weights take care of breaking the symmetry and even if bias is 0, the values in every neuron are still different.
+Initializing weights randomly. Assigning random values to weights is better than just 0 assignment.
+a) If weights are initialized with very high values the term np.dot(W,X)+b becomes significantly higher and if an activation function like sigmoid() is applied, the function maps its value near to 1 where the slope of gradient changes slowly and learning takes a lot of time.
+b) If weights are initialized with low values it gets mapped to 0, where the case is the same as above. This problem is often referred to as the vanishing gradient."
+Neural Network,What if we set all the weights of a neural network to 0?,"If all the weights of a neural network are set to zero, the output of each connection is same (W*x = 0). This means the gradients which are backpropagated to each connection in a layer is same. This means all the connections/weights learn the same thing, and the model never converges."
+Neural Network,What regularization techniques for neural nets do you know?,"L1 Regularization - Defined as the sum of absolute values of the individual parameters. The L1 penalty causes a subset of the weights to become zero, suggesting that the corresponding features may safely be discarded.
+L2 Regularization - Defined as the sum of square of individual parameters. Often supported by regularization hyperparameter alpha. It results in weight decay.
+Data Augmentation - This requires some fake data to be created as a part of training set.
+Drop Out : This is most effective regularization technique for newral nets. Few randome nodes in each layer is deactivated in forward pass. This allows the algorithm to train on different set of nodes in each iterations."
+Neural Network,What is dropout? Why is it useful? How does it work?,"Dropout is a technique that at each training step turns off each neuron with a certain probability of p. This way at each iteration we train only 1-p of neurons, which forces the network not to rely only on the subset of neurons for feature representation. This leads to regularizing effects that are controlled by the hyperparameter p.
+"
+Neural Network,What is backpropagation? How does it work? Why do we need it?,"The Backpropagation algorithm looks for the minimum value of the error function in weight space using a technique called the delta rule or gradient descent. The weights that minimize the error function is then considered to be a solution to the learning problem.
+
+We need backpropogation because,
+
+Calculate the error – How far is your model output from the actual output.
+Minimum Error – Check whether the error is minimized or not.
+Update the parameters – If the error is huge then, update the parameters (weights and biases). After that again check the error.
+Repeat the process until the error becomes minimum.
+Model is ready to make a prediction – Once the error becomes minimum, you can feed some inputs to your model and it will produce the output."
+Neural Network,Which optimization techniques for training neural nets do you know?,"Gradient Descent
+Stochastic Gradient Descent
+Mini-Batch Gradient Descent(best among gradient descents)
+Nesterov Accelerated Gradient
+Momentum
+Adagrad
+AdaDelta
+Adam(best one. less time, more efficient)"
+Neural Network,How do we use SGD (stochastic gradient descent) for training a neural net?,"SGD approximates the expectation with few randomly selected samples (instead of the full data). In comparison to batch gradient descent, we can efficiently approximate the expectation in large data sets using SGD. For neural networks this reduces the training time a lot even considering that it will converge later as the random sampling adds noise to the gradient descent."
+Neural Network,What’s the learning rate?,"The learning rate is an important hyperparameter that controls how quickly the model is adapted to the problem during the training. It can be seen as the ""step width"" during the parameter updates, i.e. how far the weights are moved into the direction of the minimum of our optimization problem."
+Neural Network,How to set the learning rate?,There is no straightforward way of finding an optimum learning rate for a model. It involves a lot of hit and trial. Usually starting with a small values such as 0.01 is a good starting point for setting a learning rate and further tweaking it so that it doesn't overshoot or converge too slowly.
+Neural Network,What is Adam? What’s the main difference between Adam and SGD?,"Adam (Adaptive Moment Estimation) is a optimization technique for training neural networks. on an average, it is the best optimizer .It works with momentums of first and second order. The intuition behind the Adam is that we don’t want to roll so fast just because we can jump over the minimum, we want to decrease the velocity a little bit for a careful search.
+
+Adam tends to converge faster, while SGD often converges to more optimal solutions. SGD's high variance disadvantages gets rectified by Adam (as advantage for Adam)."
+Neural Network,When would you use Adam and when SGD?,"Adam tends to converge faster, while SGD often converges to more optimal solutions."
+Neural Network,How do we decide when to stop training a neural net?,Simply stop training when the validation error is the minimum.
+Neural Network,What is model checkpointing?,Saving the weights learned by a model mid training for long running processes is known as model checkpointing so that you can resume your training from a certain checkpoint.
+Neural Network,What’s a convolutional layer?,"The idea of the convolutional layer is the assumption that the information needed for making a decision often is spatially close and thus, it only takes the weighted sum over nearby inputs. It also assumes that the networks’ kernels can be reused for all nodes, hence the number of weights can be drastically reduced. To counteract only one feature being learnt per layer, multiple kernels are applied to the input which creates parallel channels in the output. Consecutive layers can also be stacked to allow the network to find more high-level features."
+Neural Network,Why do we actually need convolutions? Can’t we use fully-connected layers for that?,"A fully-connected layer needs one weight per inter-layer connection, which means the number of weights which needs to be computed quickly balloons as the number of layers and nodes per layer is increased."
+Neural Network,What’s pooling in CNN? Why do we need it?,"Pooling is a technique to downsample the feature map. It allows layers which receive relatively undistorted versions of the input to learn low level features such as lines, while layers deeper in the model can learn more abstract features such as texture.
+"
+Neural Network,How does max pooling work? Are there other pooling techniques?,"Max pooling is a technique where the maximum value of a receptive field is passed on in the next feature map. The most commonly used receptive field is 2 x 2 with a stride of 2, which means the feature map is downsampled from N x N to N/2 x N/2. Receptive fields larger than 3 x 3 are rarely employed as too much information is lost.
+
+Other pooling techniques include:
+
+Average pooling, the output is the average value of the receptive field.
+Min pooling, the output is the minimum value of the receptive field.
+Global pooling, where the receptive field is set to be equal to the input size, this means the output is equal to a scalar and can be used to reduce the dimensionality of the feature map."
+Neural Network,Are CNNs resistant to rotations? What happens to the predictions of a CNN if an image is rotated?,"CNNs are not resistant to rotation by design. However, we can make our models resistant by augmenting our datasets with different rotations of the raw data. The predictions of a CNN will change if an image is rotated and we did not augment our dataset accordingly."
+Neural Network,What are augmentations? Why do we need them? ,"Augmentations are an artifical way of expanding the existing datasets by performing some transformations, color shifts or many other things on the data. It helps in diversifying the data and even increasing the data when there is scarcity of data for a model to train on."
+Neural Network,What kind of augmentations do you know?,"There are many kinds of augmentations which can be used according to the type of data you are working on some of which are geometric and numerical transformation, PCA, cropping, padding, shifting, noise injection etc."
+Neural Network,How to choose which augmentations to use?,"Augmentations really depend on the type of output classes and the features you want your model to learn. For eg. if you have mostly properly illuminated images in your dataset and want your model to predict poorly illuminated images too, you can apply channel shifting on your data and include the resultant images in your dataset for better results."
+Neural Network,What kind of CNN architectures for classification do you know?,"Image Classification
+
+Inception v3
+Xception
+DenseNet
+AlexNet
+VGG16
+ResNet
+SqueezeNet
+EfficientNet
+MobileNet
+The last three are designed so they use smaller number of parameters which is helpful for edge AI."
+Neural Network,What is transfer learning? How does it work?,"Given a source domain D_S and learning task T_S, a target domain D_T and learning task T_T, transfer learning aims to help improve the learning of the target predictive function f_T in D_T using the knowledge in D_S and T_S, where D_S ≠ D_T,or T_S ≠ T_T. In other words, transfer learning enables to reuse knowledge coming from other domains or learning tasks.
+
+In the context of CNNs, we can use networks that were pre-trained on popular datasets such as ImageNet. We then can use the weights of the layers that learn to represent features and combine them with a new set of layers that learns to map the feature representations to the given classes. Two popular strategies are either to freeze the layers that learn the feature representations completely, or to give them a smaller learning rate."
+Methodology,What is bag of words? How we can use it for text classification?,"Bag of Words is a representation of text that describes the occurrence of words within a document. The order or structure of the words is not considered. For text classification, we look at the histogram of the words within the text and consider each word count as a feature."
+Methodology,What are the advantages and disadvantages of bag of words?,"Advantages:
+
+Simple to understand and implement.
+Disadvantages:
+
+The vocabulary requires careful design, most specifically in order to manage the size, which impacts the sparsity of the document representations.
+Sparse representations are harder to model both for computational reasons (space and time complexity) and also for information reasons
+Discarding word order ignores the context, and in turn meaning of words in the document. Context and meaning can offer a lot to the model, that if modeled could tell the difference between the same words differently arranged (“this is interesting” vs “is this interesting”), synonyms (“old bike” vs “used bike”)."
+Methodology,What are N-grams? How can we use them?,The function to tokenize into consecutive sequences of words is called n-grams. It can be used to find out N most co-occurring words (how often word X is followed by word Y) in a given sentence.
+Methodology,What is TF-IDF? How is it useful for text classification?,"Term Frequency (TF) is a scoring of the frequency of the word in the current document. Inverse Document Frequency(IDF) is a scoring of how rare the word is across documents. It is used in scenario where highly recurring words may not contain as much informational content as the domain specific words. For example, words like “the” that are frequent across all documents therefore need to be less weighted. The TF-IDF score highlights words that are distinct (contain useful information) in a given document."
+"Gradient Boosting, Logistic Regression",Would you prefer gradient boosting trees model or logistic regression when doing text classification with bag of words?,Usually logistic regression is better because bag of words creates a matrix with large number of columns. For a huge number of columns logistic regression is usually faster than gradient boosting trees.
+Methodology,"If you have a sentence with multiple words, you may need to combine multiple word embeddings into one. How would you do it?","Approaches ranked from simple to more complex:
+
+Take an average over all words
+Take a weighted average over all words. Weighting can be done by inverse document frequency (idf part of tf-idf).
+Use ML model like LSTM or Transformer."
+KMeans,Do you know how K-means works?,"Partition points into k subsets.
+Compute the seed points as the new centroids of the clusters of the current partitioning.
+Assign each point to the cluster with the nearest seed point.
+Go back to step 2 or stop when the assignment does not change."
+KMeans,How to select K for K-means?,"Domain knowledge, i.e. an expert knows the value of k
+Elbow method: compute the clusters for different values of k, for each k, calculate the total within-cluster sum of square, plot the sum according to the number of clusters and use the band as the number of clusters.
+Average silhouette method: compute the clusters for different values of k, for each k, calculate the average silhouette of observations, plot the silhouette according to the number of clusters and select the maximum as the number of clusters."
+Methodology,What are the other clustering algorithms do you know?,"k-medoids: Takes the most central point instead of the mean value as the center of the cluster. This makes it more robust to noise.
+Agglomerative Hierarchical Clustering (AHC): hierarchical clusters combining the nearest clusters starting with each point as its own cluster.
+DIvisive ANAlysis Clustering (DIANA): hierarchical clustering starting with one cluster containing all points and splitting the clusters until each point describes its own cluster.
+Density-Based Spatial Clustering of Applications with Noise (DBSCAN): Cluster defined as maximum set of density-connected points."
+Methodology,Do you know how DBScan works?,"Two input parameters epsilon (neighborhood radius) and minPts (minimum number of points in an epsilon-neighborhood)
+Cluster defined as maximum set of density-connected points.
+Points p_j and p_i are density-connected w.r.t. epsilon and minPts if there is a point o such that both, i and j are density-reachable from o w.r.t. epsilon and minPts.
+p_j is density-reachable from p_i w.r.t. epsilon, minPts if there is a chain of points p_i -> p_i+1 -> p_i+x = p_j such that p_i+x is directly density-reachable from p_i+x-1.
+p_j is a directly density-reachable point of the neighborhood of p_i if dist(p_i,p_j) <= epsilon."
+"KMeans, Methodology",When would you choose K-means and when DBScan?,"DBScan is more robust to noise.
+DBScan is better when the amount of clusters is difficult to guess.
+K-means has a lower complexity, i.e. it will be much faster, especially with a larger amount of points."
+EDA,What is the curse of dimensionality? Why do we care about it?,"Data in only one dimension is relatively tightly packed. Adding a dimension stretches the points across that dimension, pushing them further apart. Additional dimensions spread the data even further making high dimensional data extremely sparse. We care about it, because it is difficult to use machine learning in sparse spaces."
+Methodology,Do you know any dimensionality reduction techniques?,"Singular Value Decomposition (SVD)
+Principal Component Analysis (PCA)
+Linear Discriminant Analysis (LDA)
+T-distributed Stochastic Neighbor Embedding (t-SNE)
+Autoencoders
+Fourier and Wavelet Transforms"
+Methodology,What’s singular value decomposition? How is it typically used for machine learning?,"Singular Value Decomposition (SVD) is a general matrix decomposition method that factors a matrix X into three matrices L (left singular values), Σ (diagonal matrix) and R^T (right singular values).
+For machine learning, Principal Component Analysis (PCA) is typically used. It is a special type of SVD where the singular values correspond to the eigenvectors and the values of the diagonal matrix are the squares of the eigenvalues. We use these features as they are statistically descriptive.
+Having calculated the eigenvectors and eigenvalues, we can use the Kaiser-Guttman criterion, a scree plot or the proportion of explained variance to determine the principal components (i.e. the final dimensionality) that are useful for dimensionality reduction."
+Statistics ,What is precision and recall at k?,"Precision at k and recall at k are evaluation metrics for ranking algorithms. Precision at k shows the share of relevant items in the first k results of the ranking algorithm. And Recall at k indicates the share of relevant items returned in top k results out of all correct answers for a given query.
+
+Example: For a search query ""Car"" there are 3 relevant products in your shop. Your search algorithm returns 2 of those relevant products in the first 5 search results. Precision at 5 = # num of relevant products in search result / k = 2/5 = 40% Recall at 5 = # num of relevant products in search result / # num of all relevant products = 2/3 = 66.6%"
+Methodology,What are good baselines when building a recommender system?,"A good recommer system should give relevant and personalized information.
+It should not recommend items the user knows well or finds easily.
+It should make diverse suggestions.
+A user should explore new items."
+Methodology,What is collaborative filtering?,"Collaborative filtering is the most prominent approach to generate recommendations.
+It uses the wisdom of the crowd, i.e. it gives recommendations based on the experience of others.
+A recommendation is calculated as the average of other experiences.
+Say we want to give a score that indicates how much user u will like an item i. Then we can calculate it with the experience of N other users U as r_ui = 1/N * sum(v in U) r_vi.
+In order to rate similar experiences with a higher weight, we can introduce a similarity between users that we use as a multiplier for each rating.
+Also, as users have an individual profile, one user may have an average rating much larger than another user, so we use normalization techniques (e.g. centering or Z-score normalization) to remove the users' biases.
+Collaborative filtering does only need a rating matrix as input and improves over time. However, it does not work well on sparse data, does not work for cold starts (see below) and usually tends to overfit."
+Methodology,"How we can incorporate implicit feedback (clicks, etc) into our recommender systems?","In comparison to explicit feedback, implicit feedback datasets lack negative examples. For example, explicit feedback can be a positive or a negative rating, but implicit feedback may be the number of purchases or clicks. One popular approach to solve this problem is named weighted alternating least squares (wALS) [Hu, Y., Koren, Y., & Volinsky, C. (2008, December). Collaborative filtering for implicit feedback datasets. In Data Mining, 2008. ICDM'08. Eighth IEEE International Conference on (pp. 263-272). IEEE.]. Instead of modeling the rating matrix directly, the numbers (e.g. amount of clicks) describe the strength in observations of user actions. The model tries to find latent factors that can be used to predict the expected preference of a user for an item.
+"
+Methodology,What is the cold start problem?,"Collaborative filterung incorporates crowd knowledge to give recommendations for certain items. Say we want to recommend how much a user will like an item, we then will calculate the score using the recommendations of other users for this certain item. We can distinguish between two different ways of a cold start problem now. First, if there is a new item that has not been rated yet, we cannot give any recommendation. Also, when there is a new user, we cannot calculate a similarity to any other user."
+Methodology,Possible approaches to solving the cold start problem?,"Content-based filtering incorporates features about items to calculate a similarity between them. In this way, we can recommend items that have a high similarity to items that a user liked already. In this way, we are not dependant on the ratings of other users for a given item anymore and solve the cold start problem for new items.
+Demographic filtering incorporates user profiles to calculate a similarity between them and solves the cold start problem for new users."
+Time Series,How is time series different from the usual regression problem?,"The principle behind causal forecasting is that the value that has to be predicted is dependant on the input features (causal factors). In time series forecasting, the to be predicted value is expected to follow a certain pattern over time."
+Time Series,Which models do you know for solving time series problems?,"Simple Exponential Smoothing: approximate the time series with an exponentional function
+Trend-Corrected Exponential Smoothing (Holt‘s Method): exponential smoothing that also models the trend
+Trend- and Seasonality-Corrected Exponential Smoothing (Holt-Winter‘s Method): exponential smoothing that also models trend and seasonality
+Time Series Decomposition: decomposed a time series into the four components trend, seasonal variation, cycling varation and irregular component
+Autoregressive models: similar to multiple linear regression, except that the dependent variable y_t depends on its own previous values rather than other independent variables.
+Deep learning approaches (RNN, LSTM, etc.)"
+Methodology,"If there’s a trend in our series, how we can remove it? And why would we want to do it?","We can explicitly model the trend (and/or seasonality) with approaches such as Holt's Method or Holt-Winter's Method. We want to explicitly model the trend to reach the stationarity property for the data. Many time series approaches require stationarity. Without stationarity,the interpretation of the results of these analyses is problematic [Manuca, Radu & Savit, Robert. (1996). Stationarity and nonstationarity in time series analysis. Physica D: Nonlinear Phenomena. 99. 134-161. 10.1016/S0167-2789(96)00139-X. ]."
+Methodology,You have a series with only one variable “y” measured at time t. How do predict “y” at time t+1? Which approaches would you use?,We want to look at the correlation between different observations of y. This measure of correlation is called autocorrelation. Autoregressive models are multiple regression models where the time-lag series of the original time series are treated like multiple independent variables.
+Methodology,You have a series with a variable “y” and a set of features. How do you predict “y” at t+1? Which approaches would you use?,"Given the assumption that the set of features gives a meaningful causation to y, a causal forecasting approach such as linear regression or multiple nonlinear regression might be useful. In case there is a lot of data and the explanability of the results is not a high priority, we can also consider deep learning approaches."
+"Decision Trees, Time Series",What are the problems with using trees for solving time series problems?,"Random Forest models are not able to extrapolate time series data and understand increasing/decreasing trends. It will provide us with average data points if the validation data has values greater than the training data points.
+"
+Methodology,What are the most common algorithms for supervised learning and unsupervised learning?,"Supervised learning algorithms:
+
+Linear regression
+Logistic regression
+Decision trees
+Random forests
+Naive Bayes
+Neural networks
+
+Examples of unsupervised algorithms:
+
+Clustering: k-Means
+Visualization and dimensionality reduction
+Principal component analysis (PCA), t-distributed
+Stochastic neighbor embedding (t-SNE)
+Association rule learning (Apriori)"
+Methodology,How do you choose a classifier based on a training set size?,"For a small training set, a model with high bias and low variance models is better, as it is less likely overfit. An example is Naive Bayes.
+
+For a large training set, a model with low bias and high variance models is better, as it expresses more complex relationships. An example is Logistic Regression.
+"
+Methodology,Explain LDA for unsupervised learning.,"Latent Dirichlet Allocation (LDA) is a common method for topic modeling. It is a generative model for representing documents as a combination of topics, each with their own probability distribution.
+
+LDA aims to project the features of higher dimensional space onto a lower-dimensional space. This helps to avoid the curse of dimensionality."
+Methodology,How do you fix high variance in a model?,"If the model has low variance and high bias, we use a bagging algorithm, which divides a data set into subsets using randomized sampling. We use those samples to generate a set of models with a single learning algorithm.
+
+Additionally, we can use the regularization technique, in which higher model coefficients are penalized to lower the complexity overall."
+EDA,You are working on a dataset. How do you select important variables?,"Remove correlated variables before selecting important variables
+Use Random Forest and a plot variable importance chart
+Use Lasso Regression
+Use linear regression to select variables based on p values
+Use Forward Selection, Stepwise Selection, and Backward Selection"
+Neural Network,What are advantages and disadvantages of using neural networks?,"Advantages:
+
+Store data on the entire network rather than a database
+Parallel processing
+Distributed memory
+Provides great accuracy even with limited information
+
+Disadvantages:
+
+Requires complex processors
+Duration of a network is somewhat unknown
+We rely on error value too heavily
+Black-box nature
+"
+Decision Trees,What is the default method for splitting in decision trees?,"The default method is the Gini Index, which is the measure of impurity of a particular node. Essentially, it calculates the probability of a specific feature that is classified incorrectly. When the elements are linked by a single class, we call this “pure”.
+
+You could also use Random Forest, but the Gini Index is preferred because it isn’t computationally intensive and doesn’t involve logarithm functions."
+"XGBoost, SVM",Why does XGBoost perform better than SVM?,"XGBoos is an ensemble method that uses many trees. This means it improves as it repeats itself.
+
+SVM is a linear separator. So, if our data is not linearly separable, SVM requires a Kernel to get the data to a state where it can be separated. This can limit us, as there is not a perfect Kernel for every given dataset."
+Neural Network,"For NLP, what’s the main purpose of using an encoder-decoder model?","We use the encoder-decoder model to generate an output sequence based on an input sequence.
+
+What makes an encoder-decoder model so powerful is that the decoder uses the final state of the encoder as its initial state. This gives the decoder access to the information that the encoder extracted from the input sequence."
+EDA,"When using scikit-learn, is it true that we need to scale our feature values when they vary greatly?","Yes. Most of the machine learning algorithms use Euclidean distance as the metrics to measure the distance between two data points. If the range of values is different greatly, the result of the same change in the different features will be very different."
