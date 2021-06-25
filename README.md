@@ -41,4 +41,8 @@ MultinomialNB              |             Random Forest |             Decision Tr
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Alt text](images/C_1.png?raw=true)  |  ![Alt text](images/C_2.png?raw=true) | ![Alt text](images/C_3.png?raw=true)
 
+## Chi_Square Test (Feature Selection) 
+
+![Alt text](images/Chi_Square test.png?raw=true)
+
 
