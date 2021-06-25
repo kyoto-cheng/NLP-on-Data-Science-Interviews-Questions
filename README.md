@@ -35,14 +35,14 @@ Statistics - Questions      |  Statistics - Answers
 :-------------------------:|:-------------------------:
 ![Alt text](images/ST_1.png?raw=true)  |  ![Alt text](images/ST_2.png?raw=true)
 
+## Chi_Square Test (Feature Selection) 
+
+![Alt text](images/Chi_Square.png?raw=true)
+
 ## Model Results
 
 MultinomialNB              |             Random Forest |             Decision Trees 
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Alt text](images/C_1.png?raw=true)  |  ![Alt text](images/C_2.png?raw=true) | ![Alt text](images/C_3.png?raw=true)
-
-## Chi_Square Test (Feature Selection) 
-
-![Alt text](images/Chi_Square.png?raw=true)
 
 
