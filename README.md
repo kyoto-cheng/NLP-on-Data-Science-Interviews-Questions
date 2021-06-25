@@ -19,5 +19,8 @@ A conclusion is that there are not as many different interview questions as I ex
 
 ## Exploration Results
 
-![Alt text](images/EDA_1.png?raw=true "EDA - Questions") ![Alt text](images/EDA_2.png?raw=true "EDA - Answers")
+EDA - Questions             |  EDA - Answers
+:-------------------------:|:-------------------------:
+![Alt text](images/EDA_1.png?raw=true)  |  ![Alt text](images/EDA_2.png?raw=true)
+
 
