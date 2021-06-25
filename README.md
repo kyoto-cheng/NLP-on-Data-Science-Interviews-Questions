@@ -23,4 +23,16 @@ EDA - Questions             |  EDA - Answers
 :-------------------------:|:-------------------------:
 ![Alt text](images/EDA_1.png?raw=true)  |  ![Alt text](images/EDA_2.png?raw=true)
 
+Method - Questions          |  Method - Answers
+:-------------------------:|:-------------------------:
+![Alt text](images/MT_1.png?raw=true)  |  ![Alt text](images/MT_2.png?raw=true)
+
+Model - Questions           |  Model - Answers
+:-------------------------:|:-------------------------:
+![Alt text](images/MD_1.png?raw=true)  |  ![Alt text](images/MD_2.png?raw=true)
+
+Statistics - Questions      |  Statistics - Answers
+:-------------------------:|:-------------------------:
+![Alt text](images/ST_1.png?raw=true)  |  ![Alt text](images/ST_2.png?raw=true)
+
 
