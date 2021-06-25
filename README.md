@@ -19,4 +19,4 @@ A conclusion is that there are not as many different interview questions as I ex
 
 ## Exploration Results
 
-![alt text](https://github.com/Kizuna-Cheng/Data_Science_Interviews_NLP/blob/main/images/EDA_1.png) ![alt text](https://github.com/Kizuna-Cheng/Data_Science_Interviews_NLP/blob/main/images/EDA_2.png) 
+![Alt text](images/EDA_1.png?raw=true "Optional Title")
